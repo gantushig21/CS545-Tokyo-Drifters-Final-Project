@@ -24,16 +24,13 @@
 
     <mvc:resources  location="/resources/"  mapping="/resource/**"/>
 
-
     <bean id="messageSource"
           class="org.springframework.context.support.ReloadableResourceBundleMessageSource">
         <property name="basenames" value="classpath:messages,classpath:errorMessages" />
     </bean>
 
-
     <bean id="validator"
           class="org.springframework.validation.beanvalidation.LocalValidatorFactoryBean">
         <property name="validationMessageSource" ref="messageSource" />
     </bean>
-
 </beans>
