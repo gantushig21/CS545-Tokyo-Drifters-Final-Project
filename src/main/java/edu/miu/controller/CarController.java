@@ -3,6 +3,7 @@ package edu.miu.controller;
 import edu.miu.domain.Car;
 import edu.miu.service.CarService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -29,21 +30,21 @@ public class CarController {
 
     @RequestMapping(value = "", method = RequestMethod.GET)
     public String cars(@RequestParam int page, @RequestParam int limit, Model model) {
-        List<Car> cars = carService.getCars(page, limit);
+        Page<Car> cars = carService.getCars(page, limit);
 
         int total = carService.count();
 
-        model.addAttribute("cars", carService.getCars(page, limit));
+        model.addAttribute("cars", cars);
         model.addAttribute("page", page);
         model.addAttribute("limit", limit);
         model.addAttribute("pages", (int) Math.ceil((double) total / limit));
-
+        System.out.println(carService.getCars(page, limit));
         return "cars-list";
     }
 
     @RequestMapping(value = {"/list"}, method = RequestMethod.GET)
-    public @ResponseBody List<Car> carsList(@RequestParam int page, @RequestParam int limit) {
-        List<Car> cars = carService.getCars(page, limit);
+    public @ResponseBody Page<Car> carsList(@RequestParam int page, @RequestParam int limit) {
+        Page<Car> cars = carService.getCars(page, limit);
 
         return cars;
     }
