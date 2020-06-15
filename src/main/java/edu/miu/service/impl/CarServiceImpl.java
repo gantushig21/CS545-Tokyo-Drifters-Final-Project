@@ -9,6 +9,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.time.LocalDateTime;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 @Transactional
@@ -17,11 +18,19 @@ public class CarServiceImpl implements CarService {
     private CarRepository carRepository;
 
     @Override
-    public void save(Car car) {
+    public void create(Car car) {
         car.setCreatedDate(LocalDateTime.now());
         car.setUpdatedDate(LocalDateTime.now());
 
-        System.out.println(car);
+        carRepository.save(car);
+    }
+
+    @Override
+    public void update(Car car) {
+        Car prevCar = getCarById(car.getId());
+        car.setCreatedDate(prevCar.getCreatedDate());
+        car.setUpdatedDate(LocalDateTime.now());
+
         carRepository.save(car);
     }
 
@@ -31,12 +40,18 @@ public class CarServiceImpl implements CarService {
     }
 
     @Override
-    public void deleteById(long carId) {
+    public void deleteById(Long carId) {
         carRepository.deleteById(carId);
     }
 
     @Override
     public int count() {
         return (int) carRepository.count();
+    }
+
+    @Override
+    public Car getCarById(Long carId) {
+        Optional<Car> car = carRepository.findById(carId);
+        return car.get();
     }
 }
