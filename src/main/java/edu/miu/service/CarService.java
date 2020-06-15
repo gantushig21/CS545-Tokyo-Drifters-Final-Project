@@ -7,8 +7,10 @@ import java.util.List;
 import org.springframework.data.domain.Page;
 
 public interface CarService {
-    public void save(Car car);
     public Page<Car> getCars(int page, int limit);
-    public void deleteById(long carId);
+    public void create(Car car);
+    public void update(Car car);
+    public void deleteById(Long carId);
+    public Car getCarById(Long carId);
     public int count();
 }
