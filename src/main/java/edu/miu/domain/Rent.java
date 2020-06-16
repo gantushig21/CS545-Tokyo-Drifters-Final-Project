@@ -1,7 +1,10 @@
 package edu.miu.domain;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 import javax.persistence.*;
 import java.time.LocalDateTime;
+import java.util.Date;
 
 @Entity
 public class Rent {
@@ -18,11 +21,14 @@ public class Rent {
     private Car car;
 
     @Column(nullable = false)
-    private LocalDateTime checkoutDate;
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    private Date checkoutDate;
 
-    private LocalDateTime dueDate;
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    private Date dueDate;
 
-    private LocalDateTime returnDate;
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    private Date returnDate;
 
     @Column(nullable = false)
     private Double rentCost;
@@ -59,27 +65,27 @@ public class Rent {
         this.car = car;
     }
 
-    public LocalDateTime getCheckoutDate() {
+    public Date getCheckoutDate() {
         return checkoutDate;
     }
 
-    public void setCheckoutDate(LocalDateTime checkoutDate) {
+    public void setCheckoutDate(Date checkoutDate) {
         this.checkoutDate = checkoutDate;
     }
 
-    public LocalDateTime getDueDate() {
+    public Date getDueDate() {
         return dueDate;
     }
 
-    public void setDueDate(LocalDateTime dueDate) {
+    public void setDueDate(Date dueDate) {
         this.dueDate = dueDate;
     }
 
-    public LocalDateTime getReturnDate() {
+    public Date getReturnDate() {
         return returnDate;
     }
 
-    public void setReturnDate(LocalDateTime returnDate) {
+    public void setReturnDate(Date returnDate) {
         this.returnDate = returnDate;
     }
 
@@ -113,5 +119,21 @@ public class Rent {
 
     public void setUserCredentials(UserCredentials userCredentials) {
         this.userCredentials = userCredentials;
+    }
+
+    @Override
+    public String toString() {
+        return "Rent{" +
+                "id=" + id +
+                ", customer=" + customer +
+                ", car=" + car +
+                ", checkoutDate=" + checkoutDate +
+                ", dueDate=" + dueDate +
+                ", returnDate=" + returnDate +
+                ", rentCost=" + rentCost +
+                ", feeForOverdue=" + feeForOverdue +
+                ", totalCost=" + totalCost +
+                ", userCredentials=" + userCredentials +
+                '}';
     }
 }

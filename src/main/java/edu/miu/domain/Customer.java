@@ -98,4 +98,18 @@ public class Customer {
     public void setBonusScore(Integer bonusScore) {
         this.bonusScore = bonusScore;
     }
+
+    @Override
+    public String toString() {
+        return "Customer{" +
+                "id=" + id +
+                ", passportId='" + passportId + '\'' +
+                ", firstName='" + firstName + '\'' +
+                ", lastName='" + lastName + '\'' +
+                ", phoneNumber='" + phoneNumber + '\'' +
+                ", email='" + email + '\'' +
+                ", birthday=" + birthday +
+                ", bonusScore=" + bonusScore +
+                '}';
+    }
 }
