@@ -59,4 +59,8 @@ public class CarServiceImpl implements CarService {
         return car.get();
     }
 
+    @Override
+    public void changeCarStatusById(Long carId, String status) {
+        carRepository.changeCarStatusById(carId, status);
+    }
 }

@@ -14,6 +14,11 @@
 <html>
 <head>
     <title>Title</title>
+    <%@ include file="parts/Header.jsp"%>
+
+    <meta name="_csrf_token" content="${_csrf.token}"/>
+    <!-- default header name is X-CSRF-TOKEN -->
+    <meta name="_csrf_parameterName" content="${_csrf.parameterName}"/>
     <link rel="stylesheet" href="<spring:url value="/resource/css/rent.css"/>" />
     <link rel="stylesheet" href="<spring:url value="/resource/css/main.css"/>" />
     <script type="text/javascript" src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
@@ -60,8 +65,15 @@
         </div>
         <h3>Rent Detail</h3>
         <form id="rentForm" style="width: 100%;" action="add?${_csrf.parameterName}=${_csrf.token}" method="post">
-            <input type="hidden" name="car_id" value="${rent.car.id}">
-            <input type="hidden" name="customer_id" value="${rent.customer.id}">
+            <c:choose>
+                <c:when test="${action eq 'return'}">
+                    <input type="hidden" name="id" value="${rent.id}">
+                </c:when>
+                <c:otherwise>
+                    <input type="hidden" name="car_id" value="${rent.car.id}">
+                    <input type="hidden" name="customer_id" value="${rent.customer.id}">
+                </c:otherwise>
+            </c:choose>
             <div class="info-lines">
                 <div class="info-line">
                     <div class="date-div">
@@ -84,23 +96,56 @@
                         <div>
                             <input
                                     id="dueDate"
+                                    value="<c:choose><c:when test="${action eq 'return'}">${rent.dueDate}</c:when><c:otherwise></c:otherwise></c:choose>"
                                     name="dueDate"
                                     cssClass="form-control"
                                     required="true"
                                     type="date"
+                                    <c:if test="${action eq 'return'}">disabled</c:if>
                                     onchange="dueDateChange(${rent.car.pricePerDay}, this.value)"
                             />
-                            <span class="form-span">
-                        </span>
                         </div>
                     </div>
                 </div>
-                <div class="date-div">
-                    <label id="rentCost"><strong>Rent Cost:</strong>0 $</label>
+                <div class="info-line">
+                    <div class="date-div">
+                        <label id="rentCost"><strong>Rent Cost:</strong>${rent.rentCost} $</label>
+                    </div>
+                    <c:if test="${action eq 'return'}">
+                        <div class="date-div">
+                            <label><strong>Return Date:</strong></label>
+                            <div>
+                                <input
+                                        id="returnDate"
+                                        value="${rent.returnDate}"
+                                        name="returnDate"
+                                        cssClass="form-control"
+                                        required="true"
+                                        type="date"
+                                        onchange="returnDateChange(${rent.car.overduePerDay}, this.value)"
+                                />
+                            </div>
+                        </div>
+                    </c:if>
                 </div>
+                <c:if test="${action eq 'return'}">
+                    <div class="info-line">
+                        <div class="date-div">
+                            <label id="overdueCost"><strong>Overdue Cost:</strong>${rent.feeForOverdue} $</label>
+                            <input type="hidden" name="overdueCost" id="overdueCostInput">
+                        </div>
+                    </div>
+                </c:if>
             </div>
             <div class="form-group" style="text-align: right;">
-                <button id="rentBtn" type="submit">Submit</button>
+                <c:choose>
+                    <c:when test="${action eq 'return'}">
+                        <button id="returnBtn" class="button button-default" type="button">Return</button>
+                    </c:when>
+                    <c:otherwise>
+                        <button id="rentBtn" class="button button-default" type="submit">Submit</button>
+                    </c:otherwise>
+                </c:choose>
             </div>
         </form>
     </div>

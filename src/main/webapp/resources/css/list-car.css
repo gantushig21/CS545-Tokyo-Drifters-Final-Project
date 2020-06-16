@@ -61,12 +61,12 @@
 	margin:0 auto;
 	margin-top:10px;
 }
+
 .wrapper-pagination{
 	position:absolute;
 	bottom:44px;
 	width:100%;
 }
-
 
 .pagination {
 	display: flex;

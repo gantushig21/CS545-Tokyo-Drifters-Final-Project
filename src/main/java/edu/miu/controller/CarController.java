@@ -77,14 +77,14 @@ public class CarController {
 
         carService.create(car);
 
-        return "redirect:/cars?page=1&limit=10";
+        return "redirect:/cars?page=0&limit=10";
     }
 
     @RequestMapping(value = {"/delete"}, method = RequestMethod.GET)
     public String deleteCar(@RequestParam("id") Long carId) {
         carService.deleteById(carId);
 
-        return "redirect:/cars?page=1&limit=10";
+        return "redirect:/cars?page=0&limit=10";
     }
 
     @RequestMapping(value = {"/detail"}, method = RequestMethod.GET)
