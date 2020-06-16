@@ -9,13 +9,9 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ taglib prefix="ct" uri="/WEB-INF/tlds/ct.tld" %>
-<%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <html>
 <head>
     <title>Title</title>
-<%--    <meta name="_csrf" content="${_csrf.token}"/>--%>
-<%--    <!-- default header name is X-CSRF-TOKEN -->--%>
-<%--    <meta name="_csrf_header" content="${_csrf.headerName}"/>--%>
 </head>
 <body>
     <table>
@@ -31,8 +27,6 @@
                 <th>Overdue per Day</th>
                 <th>Created</th>
                 <th>Updated</th>
-                <th>Image</th>
-                <th>Action</th>
             </tr>
         </thead>
         <tbody>
@@ -48,12 +42,6 @@
                     <td>${car.overduePerDay }$</td>
                     <td><ct:dateFormat date="${car.createdDate}"/></td>
                     <td><ct:dateFormat date="${car.updatedDate}"/></td>
-                    <td>
-                        <img src="<c:url value="/resource/images/${car.imagePath}"></c:url>" alt="car" style="max-width: 200px;">
-                    </td>
-                    <td>
-                        <a href="cars/detail?id=${car.id}">Detail</a>
-                    </td>
                 </tr>
             </c:forEach>
         </tbody>

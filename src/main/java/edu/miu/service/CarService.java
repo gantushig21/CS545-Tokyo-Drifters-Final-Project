@@ -5,10 +5,8 @@ import edu.miu.domain.Car;
 import java.util.List;
 
 public interface CarService {
-    public void create(Car car);
-    public void update(Car car);
+    public void save(Car car);
     public List<Car> getCars(int page, int limit);
-    public void deleteById(Long carId);
-    public Car getCarById(Long carId);
+    public void deleteById(long carId);
     public int count();
 }

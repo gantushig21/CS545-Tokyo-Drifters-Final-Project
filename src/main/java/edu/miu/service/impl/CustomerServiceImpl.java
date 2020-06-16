@@ -1,29 +1,71 @@
 package edu.miu.service.impl;
 
-import edu.miu.domain.Customer;
-import edu.miu.repository.CustomerRepository;
-import edu.miu.service.CustomerService;
+import java.util.List;
+import java.util.Optional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.Optional;
+import edu.miu.domain.Customer;
+import edu.miu.repository.CustomerRepository;
+import edu.miu.service.CustomerService;
 
 @Service
 @Transactional
 public class CustomerServiceImpl implements CustomerService {
-    @Autowired
-    private CustomerRepository customerRepository;
 
-    @Override
-    public void create(Customer customer) {
-        customerRepository.save(customer);
-    }
+	@Autowired
+	CustomerRepository customerRepository;
 
-    @Override
-    public Customer getById(Long id) {
-        Optional<Customer> customer = customerRepository.findById(id);
+	@Override
+	public Customer findCustomerbyPassportId(String passportId) {
+		// TODO Auto-generated method stub
+		return customerRepository.findCustomerByPassportId(passportId);
+	}
 
-        return customer.get();
-    }
+	@Override
+	public Customer saveCustomer(Customer customer) {
+		// TODO Auto-generated method stub
+
+		return customerRepository.save(customer);
+	}
+
+	@Override
+	public void deleteCustomer(long Id) {
+		// TODO Auto-generated method stub
+		customerRepository.deleteById(Id);
+	}
+
+	@Override
+	public Customer updateCustomer(Customer customer) {
+		// TODO Auto-generated method stub
+
+		return customerRepository.save(customer);
+
+	}
+
+	@Override
+	public List<Customer> findAll() {
+
+		return (List<Customer>) customerRepository.findAll();
+	}
+
+	@Override
+	public boolean checkCustomer(long id) {
+
+		return customerRepository.existsById(id);
+	}
+
+	@Override
+	public Customer findCustomer(long id) {
+
+		Optional<Customer> res = customerRepository.findById(id);
+
+		if (res.isPresent()) {
+			return res.get();
+		}
+		return null;
+	}
+
 }
