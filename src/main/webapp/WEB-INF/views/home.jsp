@@ -1,16 +1,21 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: gantushig
-  Date: 6/11/20
-  Time: 2:39 PM
-  To change this template use File | Settings | File Templates.
---%>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 <html>
 <head>
-    <title>Home</title>
+<style type="text/css">
+@import url("<spring:url value="resource/css/index.css"/>");
+</style>
+
+<%@ include file="parts/meta.jsp" %>  
+<title>Home Page</title>
+
 </head>
 <body>
-    <h1>This is a home page</h1>
+<%@ include file="parts/Header.jsp" %> 
+<div class="container"> 
+hello
+</div>
+ <%@ include file="parts/Footer.jsp" %>  
 </body>
 </html>
