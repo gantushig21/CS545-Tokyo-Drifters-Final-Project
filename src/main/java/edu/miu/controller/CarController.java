@@ -107,13 +107,12 @@ public class CarController {
     @RequestMapping(value = "", method = RequestMethod.GET)
     public String cars(@RequestParam int page, @RequestParam int limit, Model model) {
         Page<Car> cars = carService.getCars(page, limit);
-
-        int total = carService.count();
-
-        model.addAttribute("cars", cars);
+        int total = cars.getTotalPages();
+        System.out.println(total);
+        model.addAttribute("cars", cars.getContent());
         model.addAttribute("page", page);
         model.addAttribute("limit", limit);
-        model.addAttribute("pages", (int) Math.ceil((double) total / limit));
+        model.addAttribute("pages", total);
         System.out.println(carService.getCars(page, limit));
         return "cars-list";
     }

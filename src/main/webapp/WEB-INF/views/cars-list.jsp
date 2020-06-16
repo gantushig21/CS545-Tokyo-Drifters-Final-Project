@@ -21,60 +21,34 @@
 <%@ include file="parts/meta.jsp"%>
 <title>Title</title>
 <%@ include file="parts/Header.jsp"%>
+<script type="text/javascript" src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
+    <script type="text/javascript" src="<spring:url value="/resource/js/cars.js"/>"></script>
 </head>
 <body>
 
 	<div class="container">
 	<div class="flex-container">
-	<c:forEach begin="0" end="11" varStatus="loop">
-	
-		<div class="card" style="width: 188px;">
-			<img class="card-img-top" src="..." alt="Card image cap">
+	<c:forEach items="${cars}" var="car" >
+		<div class="card" style="width: 18%;">
+			<img class="card-img-top" src="<c:url value="/resource/images/${car.imagePath}"></c:url>" alt="car" style="width: 100%;">
 			<div class="card-body">
-				<p class="card-title">Card title</p>
-				<p>Some quick example text to build on the
-					card title and make up the bulk of the card's content.</p>
-				<a href="#" class="btn">Go somewhere</a>
+				<h2 class="card-title">${car.model}</h2>
+				<p>${car.pricePerDay}</p>
+				<a href="cars/detail?id=${car.id}" class="btn">Detail</a>
 			</div>
-			
 		</div>
-		
-		
 		</c:forEach>
 		</div>
+		<div class="wrapper-pagination">
+		<ul class="pagination">
+
+    <c:forEach var="i" begin="1" end="${pages}" step="1">
+    <li class="page-item"><a class="page-link" href="cars?page=${i-1}&limit=${limit}">${i}</a></li>
+</c:forEach>
+
+  </ul>
+</div>
 	</div>
-<%-- 	<table>
-		<thead>
-			<tr>
-				<th>Factory</th>
-				<th>Model</th>
-				<th>Number</th>
-				<th>Status</th>
-				<th>Type</th>
-				<th>Price per Day</th>
-				<th>Seats</th>
-				<th>Overdue per Day</th>
-				<th>Created</th>
-				<th>Updated</th>
-			</tr>
-		</thead>
-		<tbody>
-			<c:forEach items="${cars}" var="car">
-				<tr>
-					<td>${car.factory}</td>
-					<td>${car.model}</td>
-					<td>${car.number}</td>
-					<td>${car.status}</td>
-					<td>${car.type}</td>
-					<td>${car.pricePerDay}$</td>
-					<td>${car.seats}</td>
-					<td>${car.overduePerDay }$</td>
-					<td><ct:dateFormat date="${car.createdDate}" /></td>
-					<td><ct:dateFormat date="${car.updatedDate}" /></td>
-				</tr>
-			</c:forEach>
-		</tbody>
-	</table> --%>
 	<%@ include file="parts/Footer.jsp"%>
 </body>
 </html>
