@@ -5,6 +5,7 @@ import edu.miu.domain.Response;
 import edu.miu.service.CarService;
 import edu.miu.utils.options.SelectOptions;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -105,21 +106,20 @@ public class CarController {
 
     @RequestMapping(value = "", method = RequestMethod.GET)
     public String cars(@RequestParam int page, @RequestParam int limit, Model model) {
-        List<Car> cars = carService.getCars(page, limit);
-
-        int total = carService.count();
-
-        model.addAttribute("cars", carService.getCars(page, limit));
+        Page<Car> cars = carService.getCars(page, limit);
+        int total = cars.getTotalPages();
+        System.out.println(total);
+        model.addAttribute("cars", cars.getContent());
         model.addAttribute("page", page);
         model.addAttribute("limit", limit);
-        model.addAttribute("pages", (int) Math.ceil((double) total / limit));
-
+        model.addAttribute("pages", total);
+        System.out.println(carService.getCars(page, limit));
         return "cars-list";
     }
 
     @RequestMapping(value = {"/list"}, method = RequestMethod.GET)
-    public @ResponseBody List<Car> carsList(@RequestParam int page, @RequestParam int limit) {
-        List<Car> cars = carService.getCars(page, limit);
+    public @ResponseBody Page<Car> carsList(@RequestParam int page, @RequestParam int limit) {
+        Page<Car> cars = carService.getCars(page, limit);
 
         return cars;
     }
