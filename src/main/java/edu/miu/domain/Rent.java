@@ -3,8 +3,7 @@ package edu.miu.domain;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
-import java.time.LocalDateTime;
-import java.util.Date;
+import java.time.LocalDate;
 
 @Entity
 public class Rent {
@@ -22,13 +21,13 @@ public class Rent {
 
     @Column(nullable = false)
     @DateTimeFormat(pattern = "yyyy-MM-dd")
-    private Date checkoutDate;
+    private LocalDate checkoutDate;
 
     @DateTimeFormat(pattern = "yyyy-MM-dd")
-    private Date dueDate;
+    private LocalDate dueDate;
 
     @DateTimeFormat(pattern = "yyyy-MM-dd")
-    private Date returnDate;
+    private LocalDate returnDate;
 
     @Column(nullable = false)
     private Double rentCost;
@@ -65,27 +64,27 @@ public class Rent {
         this.car = car;
     }
 
-    public Date getCheckoutDate() {
+    public LocalDate getCheckoutDate() {
         return checkoutDate;
     }
 
-    public void setCheckoutDate(Date checkoutDate) {
+    public void setCheckoutDate(LocalDate checkoutDate) {
         this.checkoutDate = checkoutDate;
     }
 
-    public Date getDueDate() {
+    public LocalDate getDueDate() {
         return dueDate;
     }
 
-    public void setDueDate(Date dueDate) {
+    public void setDueDate(LocalDate dueDate) {
         this.dueDate = dueDate;
     }
 
-    public Date getReturnDate() {
+    public LocalDate getReturnDate() {
         return returnDate;
     }
 
-    public void setReturnDate(Date returnDate) {
+    public void setReturnDate(LocalDate returnDate) {
         this.returnDate = returnDate;
     }
 

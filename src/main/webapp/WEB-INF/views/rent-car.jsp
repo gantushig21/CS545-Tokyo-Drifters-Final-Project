@@ -59,16 +59,17 @@
             </div>
         </div>
         <h3>Rent Detail</h3>
-        <form id="rentForm" style="width: 100%;">
+        <form id="rentForm" style="width: 100%;" action="add?${_csrf.parameterName}=${_csrf.token}" method="post">
+            <input type="hidden" name="car_id" value="${rent.car.id}">
+            <input type="hidden" name="customer_id" value="${rent.customer.id}">
             <div class="info-lines">
                 <div class="info-line">
                     <div class="date-div">
                         <label><strong>Checkout Date:</strong></label>
                         <div>
-                            <fmt:formatDate value="${rent.checkoutDate}" pattern="yyyy-MM-dd" var="checkoutDate"/>
                             <input
                                     id="checkoutDate"
-                                    value="${checkoutDate}"
+                                    value="${rent.checkoutDate}"
                                     cssClass="form-control"
                                     required="true"
                                     type="date"
@@ -83,6 +84,7 @@
                         <div>
                             <input
                                     id="dueDate"
+                                    name="dueDate"
                                     cssClass="form-control"
                                     required="true"
                                     type="date"
@@ -98,7 +100,7 @@
                 </div>
             </div>
             <div class="form-group" style="text-align: right;">
-                <button id="rentBtn" type="button">Submit</button>
+                <button id="rentBtn" type="submit">Submit</button>
             </div>
         </form>
     </div>
