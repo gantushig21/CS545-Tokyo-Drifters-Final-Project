@@ -44,7 +44,7 @@ public class RentController {
     public String rentCarForm(@RequestParam("car_id") Long carId, @RequestParam("customer_id") Long customerId, Model model) {
         Car car = carService.getCarById(carId);
 
-        Customer customer = customerService.getById(customerId);
+        Customer customer = customerService.findCustomer(customerId);
 
         Rent rent = new Rent();
         rent.setCar(car);
@@ -79,7 +79,7 @@ public class RentController {
         if (customerIds == null || customerIds.size() == 0)
             throw new CustomerNotFoundException(null, null);
 
-        Customer customer = customerService.getById(Long.valueOf(customerIds.get(0)));
+        Customer customer = customerService.findCustomer(Long.valueOf(customerIds.get(0)));
         if (customer == null)
             throw new CustomerNotFoundException(Long.valueOf(customerIds.get(0)), null);
 
