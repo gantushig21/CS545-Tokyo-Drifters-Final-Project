@@ -30,37 +30,37 @@
     <div class="rent-card">
         <h3>Car Information</h3>
         <div class="info-lines">
-            <div class="info-line">
-                <label><strong>Factory:</strong> ${rent.car.factory}</label>
-                <label><strong>Model:</strong> ${rent.car.model}</label>
+            <div class="row">
+                <div class="col-6"><label><strong>Factory:</strong> ${rent.car.factory}</label></div>
+                <div class="col-6"><label><strong>Model:</strong> ${rent.car.model}</label></div>
             </div>
-            <div class="info-line">
-                <label><strong>Status:</strong> ${rent.car.status}</label>
-                <label><strong>Number:</strong> ${rent.car.number}</label>
+            <div class="row">
+                <div class="col-6"><label><strong>Status:</strong> ${rent.car.status}</label></div>
+                <div class="col-6"><label><strong>Number:</strong> ${rent.car.number}</label></div>
             </div>
-            <div class="info-line">
-                <label><strong>Type:</strong> ${rent.car.type}</label>
-                <label><strong>Seats:</strong> ${rent.car.seats}</label>
+            <div class="row">
+                <div class="col-6"><label><strong>Type:</strong> ${rent.car.type}</label></div>
+                <div class="col-6"><label><strong>Seats:</strong> ${rent.car.seats}</label></div>
             </div>
-            <div class="info-line">
-                <label><strong>Price per Day:</strong> ${rent.car.pricePerDay}</label>
-                <label><strong>Overdue per Day:</strong> ${rent.car.overduePerDay}</label>
+            <div class="row">
+                <div class="col-6"><label><strong>Price per Day:</strong> ${rent.car.pricePerDay}</label></div>
+                <div class="col-6"><label><strong>Overdue per Day:</strong> ${rent.car.overduePerDay}</label></div>
             </div>
         </div>
 
         <h3>Customer Information</h3>
         <div class="info-lines">
-            <div class="info-line">
-                <label><strong>First Name:</strong> ${rent.customer.firstName}</label>
-                <label><strong>Last Name:</strong> ${rent.customer.lastName}</label>
+            <div class="row">
+                <div class="col-6"><label><strong>First Name:</strong> ${rent.customer.firstName}</label></div>
+                <div class="col-6"><label><strong>Last Name:</strong> ${rent.customer.lastName}</label></div>
             </div>
-            <div class="info-line">
-                <label><strong>Passport ID:</strong> ${rent.customer.passportId}</label>
-                <label><strong>Birthday:</strong> <ct:dateFormat date="${rent.customer.birthday}"/></label>
+            <div class="row">
+                <div class="col-6"><label><strong>Passport ID:</strong> ${rent.customer.passportId}</label></div>
+                <div class="col-6"><label><strong>Birthday:</strong> <ct:dateFormat date="${rent.customer.birthday}"/></label></div>
             </div>
-            <div class="info-line">
-                <label><strong>Phone Number:</strong> ${rent.customer.phoneNumber}</label>
-                <label><strong>Email:</strong> ${rent.customer.email}</label>
+            <div class="row">
+                <div class="col-6"><label><strong>Phone Number:</strong> ${rent.customer.phoneNumber}</label></div>
+                <div class="col-6"><label><strong>Email:</strong> ${rent.customer.email}</label></div>
             </div>
         </div>
         <h3>Rent Detail</h3>
@@ -75,10 +75,10 @@
                 </c:otherwise>
             </c:choose>
             <div class="info-lines">
-                <div class="info-line">
-                    <div class="date-div">
-                        <label><strong>Checkout Date:</strong></label>
-                        <div>
+                <div class="row">
+                    <div class="col-6">
+                        <div class="date-div">
+                            <label><strong>Checkout Date: </strong></label>
                             <input
                                     id="checkoutDate"
                                     value="${rent.checkoutDate}"
@@ -87,13 +87,11 @@
                                     type="date"
                                     disabled="true"
                             />
-                            <span class="form-span">
-                        </span>
                         </div>
                     </div>
-                    <div class="date-div">
-                        <label><strong>Due Date:</strong></label>
-                        <div>
+                    <div class="col-6">
+                        <div class="date-div">
+                            <label><strong>Due Date: </strong></label>
                             <input
                                     id="dueDate"
                                     value="<c:choose><c:when test="${action eq 'return'}">${rent.dueDate}</c:when><c:otherwise></c:otherwise></c:choose>"
@@ -107,14 +105,16 @@
                         </div>
                     </div>
                 </div>
-                <div class="info-line">
-                    <div class="date-div">
-                        <label id="rentCost"><strong>Rent Cost:</strong>${rent.rentCost} $</label>
-                    </div>
-                    <c:if test="${action eq 'return'}">
+                <div class="row">
+                    <div class="col-6">
                         <div class="date-div">
-                            <label><strong>Return Date:</strong></label>
-                            <div>
+                            <label id="rentCost"><strong>Rent Cost: </strong>${rent.rentCost} $</label>
+                        </div>
+                    </div>
+                    <div class="col-6">
+                        <c:if test="${action eq 'return'}">
+                            <div class="date-div">
+                                <label><strong>Return Date: </strong></label>
                                 <input
                                         id="returnDate"
                                         value="${rent.returnDate}"
@@ -125,22 +125,24 @@
                                         onchange="returnDateChange(${rent.car.overduePerDay}, this.value)"
                                 />
                             </div>
-                        </div>
-                    </c:if>
-                </div>
-                <c:if test="${action eq 'return'}">
-                    <div class="info-line">
-                        <div class="date-div">
-                            <label id="overdueCost"><strong>Overdue Cost:</strong>${rent.feeForOverdue} $</label>
-                            <input type="hidden" name="overdueCost" id="overdueCostInput">
-                        </div>
+                        </c:if>
                     </div>
-                </c:if>
+                </div>
+                <div class="row">
+                    <div class="col-6">
+                        <c:if test="${action eq 'return'}">
+                            <div class="date-div">
+                                <label id="overdueCost"><strong>Overdue Cost: </strong>${rent.feeForOverdue} $</label>
+                                <input type="hidden" name="overdueCost" id="overdueCostInput">
+                            </div>
+                        </c:if>
+                    </div>
+                </div>
             </div>
             <div class="form-group" style="text-align: right;">
                 <c:choose>
                     <c:when test="${action eq 'return'}">
-                        <button id="returnBtn" class="button button-default" type="button">Return</button>
+                        <button id="returnBtn" class="button button-default" type="button">Return Car</button>
                     </c:when>
                     <c:otherwise>
                         <button id="rentBtn" class="button button-default" type="submit">Submit</button>

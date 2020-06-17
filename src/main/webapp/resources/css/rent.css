@@ -13,20 +13,21 @@
     border-radius: 10px;
 }
 
+h3 {
+    margin: 12px 0px;
+}
+
 .info-lines {
     display: flex;
     flex-direction: column;
     width: 100%;
+    padding-left: 20px;
 }
 
 .info-line {
     display: flex;
     justify-content: space-between;
     margin-bottom: 8px;
+    margin-left: 20px;
 }
 
-.date-div {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
