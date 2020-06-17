@@ -61,17 +61,13 @@
 				<tbody>
 					<c:forEach items="${customers}" var="customer" varStatus="theCount">
 						<tr>
-							<td id="customerData"><c:out value="${customer.passportId}" />
-							</td>
-							<td id="customerData"><c:out value="${customer.firstName}" /></td>
-							<td id="customerData"><c:out value="${customer.lastName}" /></td>
-							<td id="customerData"><c:out value="${customer.birthday}" /></td>
-							<td id="customerData"><c:out value="${customer.email}" /></td>
-							<td id="customerData"><c:out value="${customer.phoneNumber}" />
-							</td>
-							<form:form action="customer/details/${customer.id}" method="get">
-								<td><input type="submit" value="Details" /></td>
-							</form:form>
+							<td><c:out value="${customer.passportId}" /></td>
+							<td><c:out value="${customer.firstName}" /></td>
+							<td><c:out value="${customer.lastName}" /></td>
+							<td><c:out value="${customer.birthday}" /></td>
+							<td><c:out value="${customer.email}" /></td>
+							<td><c:out value="${customer.phoneNumber}" /></td>
+							<td><a href="customer/details/${customer.id}">Details</a></td>
 						</tr>
 					</c:forEach>
 				</tbody>
