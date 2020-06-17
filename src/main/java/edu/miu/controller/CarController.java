@@ -46,8 +46,20 @@ public class CarController {
         model.addAttribute("types", SelectOptions.getCarTypes());
     }
 
+    @RequestMapping(value = "/new", method = RequestMethod.POST)
+    public String newCar(@ModelAttribute("newCar") Car car, Model model) {
+        System.out.println(car);
+        if (car.getFactory() == null) {
+            addCarSelectOptions(model);
+
+            return "add-car";
+        }
+
+        return "redirect:/cars?page=0&limit=10";
+    }
+
     @RequestMapping(value = {"/add"}, method = RequestMethod.POST)
-    public String addCarProcess(@Valid @ModelAttribute("newCar") Car car, BindingResult bindingResult, Model model) {
+    public String addCarProcess(@Valid @ModelAttribute("addingCar") Car car, BindingResult bindingResult, Model model) {
         System.out.println(car);
         if (bindingResult.hasErrors()) {
             System.out.println("Error: " + bindingResult.getAllErrors());

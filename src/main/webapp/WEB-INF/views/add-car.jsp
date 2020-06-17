@@ -7,6 +7,7 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"  %>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 
 <html>
@@ -20,21 +21,26 @@
 <body>
     <div class="form-container">
         <div class="car-card">
-            <form:form cssStyle="width: 100%;" modelAttribute="newCar" action="add?${_csrf.parameterName}=${_csrf.token}" enctype="multipart/form-data">
+            <form:form
+                modelAttribute="newCar"
+                action="new?${_csrf.parameterName}=${_csrf.token}"
+                enctype="multipart/form-data" method="post"
+                cssStyle="width: 100%;"
+            >
                 <div class="form-group">
-                    <form:input path="factory" id="factory" placeholder="Factory" cssClass="form-control" required="true" />
+                    <form:input path="factory" id="factory" placeholder="Factory" cssClass="form-control" required="true" value="Toyota"/>
                     <span class="form-span">
                         <form:errors path="factory" cssClass="error" />
                     </span>
                 </div>
                 <div class="form-group">
-                    <form:input path="model" id="model" placeholder="Model" cssClass="form-control" required="true" />
+                    <form:input path="model" id="model" placeholder="Model" cssClass="form-control" required="true" value="Corolla" />
                     <span class="form-span">
                         <form:errors path="model" cssClass="error" />
                     </span>
                 </div>
                 <div class="form-group">
-                    <form:input path="number" id="number" placeholder="Number" cssClass="form-control" required="true" />
+                    <form:input path="number" id="number" placeholder="Number" cssClass="form-control" required="true" value="CRT 34W"/>
                     <span class="form-span">
                         <form:errors path="number" cssClass="error" />
                     </span>
@@ -50,19 +56,19 @@
                     </form:select>
                 </div>
                 <div class="form-group">
-                    <form:input path="pricePerDay" id="pricePerDay" placeholder="Price per Day" cssClass="form-control" required="true" />
+                    <form:input path="pricePerDay" id="pricePerDay" placeholder="Price per Day" cssClass="form-control" required="true" value="23"/>
                     <span class="form-span">
                         <form:errors path="pricePerDay" cssClass="error" />
                     </span>
                 </div>
                 <div class="form-group">
-                    <form:input path="seats" id="seats" placeholder="Seats" cssClass="form-control" required="true" />
+                    <form:input path="seats" id="seats" placeholder="Seats" cssClass="form-control" required="true" value="5"/>
                     <span class="form-span">
                         <form:errors path="seats" cssClass="error" />
                     </span>
                 </div>
                 <div class="form-group">
-                    <form:input path="overduePerDay" id="overduePerDay" placeholder="Overdue cost per Day" cssClass="form-control" required="true" type="number"/>
+                    <form:input path="overduePerDay" id="overduePerDay" placeholder="Overdue cost per Day" cssClass="form-control" required="true" type="number" value="29"/>
                     <span class="form-span">
                         <form:errors path="overduePerDay" cssClass="error" />
                     </span>

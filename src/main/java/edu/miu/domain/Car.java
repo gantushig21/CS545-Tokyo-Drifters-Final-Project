@@ -26,7 +26,7 @@ public class Car {
 
     @NotEmpty
     @Column(length = 20)
-    private String status = "available";
+    private String status;
 
     @NotEmpty
     @Column(length = 20)
@@ -55,6 +55,24 @@ public class Car {
 
     @NotEmpty
     private String imagePath;
+
+    @Override
+    public String toString() {
+        return "Car{" +
+                "id=" + id +
+                ", factory='" + factory + '\'' +
+                ", model='" + model + '\'' +
+                ", status='" + status + '\'' +
+                ", number='" + number + '\'' +
+                ", type='" + type + '\'' +
+                ", pricePerDay=" + pricePerDay +
+                ", seats=" + seats +
+                ", overduePerDay=" + overduePerDay +
+                ", createdDate=" + createdDate +
+                ", imagePath='" + imagePath + '\'' +
+                ", updatedDate=" + updatedDate +
+                '}';
+    }
 
     public MultipartFile getImage() {
         return image;
@@ -163,20 +181,4 @@ public class Car {
         this.overduePerDay = overduePerDay;
     }
 
-    @Override
-    public String toString() {
-        return "Car{" +
-                "id=" + id +
-                ", factory='" + factory + '\'' +
-                ", model='" + model + '\'' +
-                ", status='" + status + '\'' +
-                ", number='" + number + '\'' +
-                ", type='" + type + '\'' +
-                ", pricePerDay=" + pricePerDay +
-                ", seats=" + seats +
-                ", overduePerDay=" + overduePerDay +
-                ", createdDate=" + createdDate +
-                ", updatedDate=" + updatedDate +
-                '}';
-    }
 }
