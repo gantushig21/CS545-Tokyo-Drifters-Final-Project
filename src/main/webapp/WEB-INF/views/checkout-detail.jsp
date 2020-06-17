@@ -51,7 +51,7 @@
 			<div class="searchUser-content"></div>
 			<div style="text-align: center; float:right;margin-top:30px">
 				<div style="display:inline;">
-					<button style="display:inline-block;" class="btn" type="button" id="button-addon2">Cancel</button>
+					<a href="/CS545-Tokyo-Drifters-Final-Project/cars?page=0&limit=10" style="display:inline-block;" class="btn" type="button" id="button-addon2">Cancel</a>
 				</div>
 				<div style="display:inline;">
 					<a href="/CS545-Tokyo-Drifters-Final-Project/check-out/payment" style="display:inline-block;" class="btn" type="button" id="button-addon2">Next</a>

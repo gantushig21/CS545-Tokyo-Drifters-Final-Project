@@ -12,11 +12,11 @@ public class CheckOut {
 	@Id
 	@GeneratedValue
 	private Long id;
-	@OneToOne(cascade=CascadeType.ALL)
+	@OneToOne(cascade=CascadeType.MERGE)
 	private Payment paymentType;
-	@OneToOne(cascade=CascadeType.ALL)
+	@OneToOne(cascade=CascadeType.MERGE)
 	private Customer customer;
-	@OneToOne(cascade=CascadeType.ALL)
+	@OneToOne(cascade=CascadeType.MERGE)
 	private Car car;
 
 	public Long getId() {
