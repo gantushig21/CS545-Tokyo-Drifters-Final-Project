@@ -1,28 +1,33 @@
 package edu.miu.domain;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 import javax.persistence.*;
-import java.time.LocalDateTime;
+import java.time.LocalDate;
 
 @Entity
 public class Rent {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private int id;
+    private Long id;
 
-    @OneToOne(cascade = CascadeType.ALL)
+    @OneToOne
     @JoinColumn(name = "customer_id")
     private Customer customer;
 
-    @OneToOne(cascade = CascadeType.ALL)
+    @OneToOne
     @JoinColumn(name = "car_id")
     private Car car;
 
     @Column(nullable = false)
-    private LocalDateTime checkoutDate;
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    private LocalDate checkoutDate;
 
-    private LocalDateTime dueDate;
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    private LocalDate dueDate;
 
-    private LocalDateTime returnDate;
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    private LocalDate returnDate;
 
     @Column(nullable = false)
     private Double rentCost;
@@ -31,15 +36,15 @@ public class Rent {
 
     private Double totalCost;
 
-    @OneToOne(cascade = CascadeType.ALL)
+    @OneToOne
     @JoinColumn(name = "user_id")
     private UserCredentials userCredentials;
 
-    public int getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -59,27 +64,27 @@ public class Rent {
         this.car = car;
     }
 
-    public LocalDateTime getCheckoutDate() {
+    public LocalDate getCheckoutDate() {
         return checkoutDate;
     }
 
-    public void setCheckoutDate(LocalDateTime checkoutDate) {
+    public void setCheckoutDate(LocalDate checkoutDate) {
         this.checkoutDate = checkoutDate;
     }
 
-    public LocalDateTime getDueDate() {
+    public LocalDate getDueDate() {
         return dueDate;
     }
 
-    public void setDueDate(LocalDateTime dueDate) {
+    public void setDueDate(LocalDate dueDate) {
         this.dueDate = dueDate;
     }
 
-    public LocalDateTime getReturnDate() {
+    public LocalDate getReturnDate() {
         return returnDate;
     }
 
-    public void setReturnDate(LocalDateTime returnDate) {
+    public void setReturnDate(LocalDate returnDate) {
         this.returnDate = returnDate;
     }
 
@@ -113,5 +118,21 @@ public class Rent {
 
     public void setUserCredentials(UserCredentials userCredentials) {
         this.userCredentials = userCredentials;
+    }
+
+    @Override
+    public String toString() {
+        return "Rent{" +
+                "id=" + id +
+                ", customer=" + customer +
+                ", car=" + car +
+                ", checkoutDate=" + checkoutDate +
+                ", dueDate=" + dueDate +
+                ", returnDate=" + returnDate +
+                ", rentCost=" + rentCost +
+                ", feeForOverdue=" + feeForOverdue +
+                ", totalCost=" + totalCost +
+                ", userCredentials=" + userCredentials +
+                '}';
     }
 }

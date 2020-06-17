@@ -42,10 +42,10 @@
 				<form action="/action_page.php">
 					<fieldset style="padding:20px">
 						<legend>Car Detail:</legend>
-						<label for="fname">Model:</label> <p style="display:inline-block">${car.model}</p><br>
-						<br> <label for="lname">Factory:</label> <p style="display:inline-block">${car.factory}</p><br>
-						<br> <label for="email">Type:</label> <p style="display:inline-block">${car.type}</p><br>
-						<br> <label for="birthday">Price Per Day:</label> <p style="display:inline-block">${car.pricePerDay}</p><br>
+						<label for="fname">Model:</label> <p style="display:inline">${car.model}</p><br>
+						<br> <label for="lname">Factory:</label> <p style="display:inline">${car.factory}</p><br>
+						<br> <label for="email">Type:</label> <p style="display:inline">${car.type}</p><br>
+						<br> <label for="birthday">Price Per Day:</label> <p style="display:inline">${car.pricePerDay}</p><br>
 					</fieldset>
 				</form>
 			</div>

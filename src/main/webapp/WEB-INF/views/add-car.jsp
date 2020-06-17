@@ -12,6 +12,8 @@
 <html>
 <head>
     <title>Add Car</title>
+    <%@ include file="parts/meta.jsp"%>
+    <%@ include file="parts/Header.jsp"%>
     <link rel="stylesheet" href="<spring:url value="/resource/css/cars.css"/>" />
     <link rel="stylesheet" href="<spring:url value="/resource/css/main.css"/>" />
 </head>

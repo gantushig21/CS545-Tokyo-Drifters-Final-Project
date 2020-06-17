@@ -43,11 +43,9 @@
 }
 
 .wrapper-pagination{
-	position:absolute;
 	bottom:44px;
 	width:100%;
 }
-
 
 .pagination {
 	display: flex;
@@ -71,5 +69,4 @@
 }
 .page-item{
 	 display:inline-block;
-     display:inline;
 }
