@@ -22,21 +22,23 @@
 <title>Title</title>
 <%@ include file="parts/Header.jsp"%>
 <script type="text/javascript" src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
-    <script type="text/javascript" src="<spring:url value="/resource/js/cars.js"/>"></script>
+<%--    <script type="text/javascript" src="<spring:url value="/resource/js/cars.js"/>"></script>--%>
 </head>
 <body>
 
 	<div class="container">
 	<div class="flex-container">
 	<c:forEach items="${cars}" var="car" >
-		<div class="card" style="width: 18%;">
+		<div class="card car-card">
 			<img class="card-img-top" src="<c:url value="/resource/images/${car.imagePath}"></c:url>" alt="car" style="width: 100%;">
 			<div class="card-body">
 				<h2 class="card-title">${car.model}</h2>
 				<p>${car.pricePerDay}</p>
 				<p>${car.status}</p>
-				<a href="cars/detail?id=${car.id}" class="btn">Detail</a>
-				<a href="cars/detail?id=${car.id}" class="btn">Checkout</a>
+				<div class="row" style="justify-content: center">
+					<a href="cars/detail?id=${car.id}" class="button button-default">Detail</a>
+					<a href="rent/customer?id=${car.id}" class="button button-default">Checkout</a>
+				</div>
 			</div>
 		</div>
 		</c:forEach>

@@ -23,24 +23,25 @@
         <div class="car-card">
             <form:form
                 modelAttribute="newCar"
-                action="new?${_csrf.parameterName}=${_csrf.token}"
-                enctype="multipart/form-data" method="post"
+                action="add?${_csrf.parameterName}=${_csrf.token}"
+                method="post"
                 cssStyle="width: 100%;"
+                enctype="multipart/form-data"
             >
                 <div class="form-group">
-                    <form:input path="factory" id="factory" placeholder="Factory" cssClass="form-control" required="true" value="Toyota"/>
+                    <form:input path="factory" id="factory" placeholder="Factory" cssClass="form-control" required="true"/>
                     <span class="form-span">
                         <form:errors path="factory" cssClass="error" />
                     </span>
                 </div>
                 <div class="form-group">
-                    <form:input path="model" id="model" placeholder="Model" cssClass="form-control" required="true" value="Corolla" />
+                    <form:input path="model" id="model" placeholder="Model" cssClass="form-control" required="true"/>
                     <span class="form-span">
                         <form:errors path="model" cssClass="error" />
                     </span>
                 </div>
                 <div class="form-group">
-                    <form:input path="number" id="number" placeholder="Number" cssClass="form-control" required="true" value="CRT 34W"/>
+                    <form:input path="number" id="number" placeholder="Number" cssClass="form-control" required="true"/>
                     <span class="form-span">
                         <form:errors path="number" cssClass="error" />
                     </span>
@@ -56,19 +57,19 @@
                     </form:select>
                 </div>
                 <div class="form-group">
-                    <form:input path="pricePerDay" id="pricePerDay" placeholder="Price per Day" cssClass="form-control" required="true" value="23"/>
+                    <form:input path="pricePerDay" id="pricePerDay" placeholder="Price per Day" cssClass="form-control" required="true"/>
                     <span class="form-span">
                         <form:errors path="pricePerDay" cssClass="error" />
                     </span>
                 </div>
                 <div class="form-group">
-                    <form:input path="seats" id="seats" placeholder="Seats" cssClass="form-control" required="true" value="5"/>
+                    <form:input path="seats" id="seats" placeholder="Seats" cssClass="form-control" required="true"/>
                     <span class="form-span">
                         <form:errors path="seats" cssClass="error" />
                     </span>
                 </div>
                 <div class="form-group">
-                    <form:input path="overduePerDay" id="overduePerDay" placeholder="Overdue cost per Day" cssClass="form-control" required="true" type="number" value="29"/>
+                    <form:input path="overduePerDay" id="overduePerDay" placeholder="Overdue cost per Day" cssClass="form-control" required="true" type="number"/>
                     <span class="form-span">
                         <form:errors path="overduePerDay" cssClass="error" />
                     </span>

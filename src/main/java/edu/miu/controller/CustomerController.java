@@ -6,6 +6,7 @@ import java.util.List;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -27,11 +28,16 @@ public class CustomerController {
 	@Autowired
 	CustomerService customerService;
 
-	@RequestMapping(value = { "/", "/list" }, method = RequestMethod.GET)
-	public String displayCustomers(Model model) {
-		List<Customer> customers = customerService.findAll();
-		model.addAttribute("customers", customers);
-		System.out.println("list");
+	@RequestMapping(value = "", method = RequestMethod.GET)
+	public String displayCustomers(@RequestParam int page, @RequestParam int limit, Model model) {
+		Page<Customer> customers = customerService.getCustomers(page, limit);
+		int total = customers.getTotalPages();
+
+		model.addAttribute("customers", customers.getContent());
+		model.addAttribute("page", page);
+		model.addAttribute("limit", limit);
+		model.addAttribute("pages", total);
+
 		return "customer-list";
 	}
 
@@ -96,5 +102,10 @@ public class CustomerController {
 //		return "";
 //	}
 //	
+	@RequestMapping(value = "{passportId}", method = RequestMethod.GET)
+	public @ResponseBody Customer getCustomerById(@PathVariable String passportId) {
+		Customer customer = customerService.findCustomerbyPassportId(passportId);
 
+		return customer == null ? new Customer() : customer;
+	}
 }
