@@ -5,4 +5,5 @@ import edu.miu.domain.Payment;
 
 public interface PaymentService {
 	public List<Payment> getAllPayment();
+	public Payment findPayment(Long id);
 }

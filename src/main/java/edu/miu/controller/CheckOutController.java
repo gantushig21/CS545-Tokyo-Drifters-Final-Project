@@ -7,6 +7,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -48,6 +49,20 @@ public class CheckOutController {
 	public String getAllPayemnt(Model model, @ModelAttribute("payment") Payment payment) {
 		model.addAttribute("payments", paymentService.getAllPayment());
 		return "payment";
+	}
+	
+	@RequestMapping(value = { "/payment/{id}" }, method = RequestMethod.POST)
+	public String addPayment(Model model, @PathVariable("id") Long id) {
+		CheckOut checkOut = (CheckOut) (((ModelMap) model).get("check-out"));
+		Payment payment = paymentService.findPayment(id);
+		checkOut.setPaymentType(payment);
+		model.addAttribute("check-out", checkOut);
+		return "redirect:/check-out/thank-you";
+	}
+	
+	@RequestMapping(value = { "/thank-you" }, method = RequestMethod.GET)
+	public String renderThankYou() {
+		return "thank-you";
 	}
 
 }

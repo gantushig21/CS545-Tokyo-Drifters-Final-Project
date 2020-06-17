@@ -1,6 +1,7 @@
 package edu.miu.service.impl;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -19,6 +20,11 @@ public class PaymentServiceImpl implements PaymentService {
 	@Override
 	public List<Payment> getAllPayment() {
 		return (List<Payment>) paymentRepository.findAll();
+	}
+
+	@Override
+	public Payment findPayment(Long id) {
+		return paymentRepository.findById(id).get();
 	}
 
 }

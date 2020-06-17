@@ -17,7 +17,7 @@
 <script type="text/javascript"
 	src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
 <script type="text/javascript"
-	src="<spring:url value="/resource/js/CheckOutDetail.js"/>"></script>
+	src="<spring:url value="/resource/js/payment.js"/>"></script>
 </head>
 <body>
 	<%@ include file="parts/Header.jsp"%>
@@ -26,9 +26,12 @@
 			<div>
 				<h1>Payment</h1>
 			</div>
+			<div  style="margin:20px 0px 20px 0px;" class="error">
+				
+			</div>
 			<div style="margin:20px 0px 20px 0px;">
 			<fieldset style="padding:20px">
-						<legend>Customer Detail:</legend>
+						<legend>Payment Detail:</legend>
 			<form:form cssStyle="width: 100%;" action="add?${_csrf.parameterName}=${_csrf.token}">
 			<c:forEach items="${payments}" var="payment" >
 			<input style="margin:10px" type="radio" id="age1${payment.id}" name="paymentType" value="${payment.id}">
@@ -43,7 +46,7 @@
 					<button style="display:inline-block;" class="btn" type="button" id="button-addon2">Cancel</button>
 				</div>
 				<div style="display:inline;">
-					<a href="/CS545-Tokyo-Drifters-Final-Project/check-out/payment" style="display:inline-block;" class="btn" type="button" id="button-addon2">Finish</a>
+					<button id="btnAddPayment" style="display:inline-block;" class="btn" type="button" id="button-addon2">Finish</button>
 				</div>
 			</div>
 			
