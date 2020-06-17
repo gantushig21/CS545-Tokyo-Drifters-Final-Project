@@ -100,5 +100,11 @@ public class CustomerController {
 		}
 		return customer;
 	}
-
+  
+	@RequestMapping(value = "{passportId}", method = RequestMethod.GET)
+	public @ResponseBody Customer getCustomerById(@PathVariable String passportId) {
+		Customer customer = customerService.findCustomerbyPassportId(passportId);
+    
+		return customer == null ? new Customer() : customer;
+	}
 }

@@ -6,6 +6,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+
 <meta charset="UTF-8">
 <%@ include file="parts/meta.jsp"%>
 
@@ -71,19 +72,15 @@
 							<form:form action="customer/details/${customer.id}" method="get">
 								<td><input type="submit" value="Details" /></td>
 							</form:form>
-
 						</tr>
 					</c:forEach>
 				</tbody>
 			</table>
-		</div>
-		<div class="wrapper-pagination">
-			<ul class="pagination">
-				<c:forEach var="i" begin="1" end="${pages}" step="1">
-					<li class="page-item"><a class="page-link"
-						href="customer?page=${i-1}&limit=${limit}">${i}</a></li>
-				</c:forEach>
-			</ul>
+			<jsp:include page="parts/pagination.jsp">
+				<jsp:param name="pages" value="${pages}" />
+				<jsp:param name="page" value="${page}" />
+				<jsp:param name="type" value="customer" />
+			</jsp:include>
 		</div>
 	</div>
 </body>

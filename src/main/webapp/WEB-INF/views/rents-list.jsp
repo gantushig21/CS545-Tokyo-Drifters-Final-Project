@@ -12,9 +12,6 @@
 <html>
 <head>
     <title>Title</title>
-    <style type="text/css">
-        @import url("<spring:url value="resource/css/index.css"/>");
-    </style>
     <%@ include file="parts/meta.jsp"%>
     <%@ include file="parts/Header.jsp"%>
 </head>

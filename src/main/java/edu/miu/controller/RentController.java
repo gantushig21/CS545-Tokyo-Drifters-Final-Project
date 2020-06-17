@@ -158,5 +158,18 @@ public class RentController {
 
         return rents;
     }
+
+    @RequestMapping(value = "/customer", method = RequestMethod.GET)
+    public String checkout(@RequestParam("id") Long carId, @ModelAttribute("newCustomer") Customer customer) {
+        return "checkout";
+    }
+
+    @RequestMapping(value = "/customer", method = RequestMethod.POST)
+    public String createCustomer(@ModelAttribute("newCustomer") Customer customer) {
+        System.out.println("Here: " + customer.getId());
+//        Customer newCustomer = customerService.saveCustomer(customer);
+
+        return "checkout";
+    }
 }
 

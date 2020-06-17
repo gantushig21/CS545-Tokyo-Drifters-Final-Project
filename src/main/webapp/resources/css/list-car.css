@@ -92,3 +92,7 @@
 	 display:inline-block;
      display:inline;
 }
+
+.car-card {
+	max-width: 300px;
+}

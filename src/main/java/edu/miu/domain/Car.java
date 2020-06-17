@@ -26,7 +26,7 @@ public class Car {
 
     @NotEmpty
     @Column(length = 20)
-    private String status = "available";
+    private String status;
 
     @NotEmpty
     @Column(length = 20)
@@ -46,50 +46,15 @@ public class Car {
     @NotNull
     private Double overduePerDay;
 
-    @NotNull
     private LocalDateTime createdDate;
 
-    @Transient
     @JsonIgnore
+    @Transient
     private MultipartFile image;
 
-    @NotEmpty
     private String imagePath;
 
-    public MultipartFile getImage() {
-        return image;
-    }
-
-    public void setImage(MultipartFile image) {
-        this.image = image;
-    }
-
-    public String getImagePath() {
-        return imagePath;
-    }
-
-    public void setImagePath(String imagePath) {
-        this.imagePath = imagePath;
-    }
-
-    @NotNull
     private LocalDateTime updatedDate;
-
-    public LocalDateTime getCreatedDate() {
-        return createdDate;
-    }
-
-    public void setCreatedDate(LocalDateTime createdDate) {
-        this.createdDate = createdDate;
-    }
-
-    public LocalDateTime getUpdatedDate() {
-        return updatedDate;
-    }
-
-    public void setUpdatedDate(LocalDateTime updatedDate) {
-        this.updatedDate = updatedDate;
-    }
 
     public Long getId() {
         return id;
@@ -163,6 +128,38 @@ public class Car {
         this.overduePerDay = overduePerDay;
     }
 
+    public LocalDateTime getCreatedDate() {
+        return createdDate;
+    }
+
+    public void setCreatedDate(LocalDateTime createdDate) {
+        this.createdDate = createdDate;
+    }
+
+    public MultipartFile getImage() {
+        return image;
+    }
+
+    public void setImage(MultipartFile image) {
+        this.image = image;
+    }
+
+    public String getImagePath() {
+        return imagePath;
+    }
+
+    public void setImagePath(String imagePath) {
+        this.imagePath = imagePath;
+    }
+
+    public LocalDateTime getUpdatedDate() {
+        return updatedDate;
+    }
+
+    public void setUpdatedDate(LocalDateTime updatedDate) {
+        this.updatedDate = updatedDate;
+    }
+
     @Override
     public String toString() {
         return "Car{" +
@@ -176,6 +173,7 @@ public class Car {
                 ", seats=" + seats +
                 ", overduePerDay=" + overduePerDay +
                 ", createdDate=" + createdDate +
+                ", imagePath='" + imagePath + '\'' +
                 ", updatedDate=" + updatedDate +
                 '}';
     }

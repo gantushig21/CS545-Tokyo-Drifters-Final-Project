@@ -13,6 +13,7 @@
 <ul class="header">
   <li><a href="${pageContext.request.contextPath}/cars?page=0&limit=10">Cars</a></li>
   <li><a href="${pageContext.request.contextPath}/cars/add">Add Car</a></li>
+  <li><a href="${pageContext.request.contextPath}/customer?page=0&limit=10">Customers</a></li>
   <li><a href="${pageContext.request.contextPath}/rent?page=0&limit=10">Rents</a></li>
   <li><a href="${pageContext.request.contextPath}/customer?page=0&limit=10">Customers</a></li>
 </ul>
