@@ -35,9 +35,9 @@
 				<h2 class="card-title">${car.model}</h2>
 				<p>${car.pricePerDay}</p>
 				<p>${car.status}</p>
-				<div class="row" style="justify-content: center">
-					<a href="cars/detail?id=${car.id}" class="button button-default">Detail</a>
-					<a href="rent/customer?id=${car.id}" class="button button-default">Checkout</a>
+				<div style="display:flex;margin-top:5px">
+				<a href="cars/detail?id=${car.id}" class="btn">Detail</a>
+				<a href="check-out?carId=${car.id}" class="btn">Check Out</a>
 				</div>
 			</div>
 		</div>

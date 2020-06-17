@@ -3,11 +3,12 @@
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%><!DOCTYPE html>
 <html>
 <head>
-  <link rel="stylesheet" href="<spring:url value="/resource/css/header.css"/>" />
-  <link rel="stylesheet" href="<spring:url value="/resource/css/index.css"/>" />
+  <link rel="stylesheet" href="<spring:url value="http://localhost:8080/CS545-Tokyo-Drifters-Final-Project/resource/css/header.css"/>" />
+  <link rel="stylesheet" href="<spring:url value="http://localhost:8080/CS545-Tokyo-Drifters-Final-Project/resource/css/index.css"/>" />
 <%--  <link rel="stylesheet" type="text/css" href="fonts/font-awesome-4.7.0/css/font-awesome.min.css">--%>
   <meta charset="UTF-8">
   <title>Insert title here</title>
+
 </head>
 <body>
 <ul class="header">

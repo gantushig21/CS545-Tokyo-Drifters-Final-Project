@@ -15,6 +15,7 @@ import org.springframework.web.multipart.MultipartFile;
 import javax.servlet.ServletContext;
 import javax.validation.Valid;
 import java.io.File;
+import java.util.Date;
 import java.util.List;
 
 @Controller
@@ -106,6 +107,7 @@ public class CarController {
 
     @RequestMapping(value = "", method = RequestMethod.GET)
     public String cars(@RequestParam int page, @RequestParam int limit, Model model) {
+    	System.out.println(new Date());
         Page<Car> cars = carService.getCars(page, limit);
         int total = cars.getTotalPages();
         System.out.println(total);
