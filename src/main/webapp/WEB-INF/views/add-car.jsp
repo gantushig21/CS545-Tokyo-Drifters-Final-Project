@@ -72,7 +72,7 @@
                 </div>
 
                 <div class="form-group" style="text-align: right;">
-                    <input type="submit" value="Submit">
+                    <button type="submit" class="button button-default">Submit</button>
                 </div>
             </form:form>
         </div>

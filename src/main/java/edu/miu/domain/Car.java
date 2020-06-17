@@ -7,7 +7,7 @@ import org.springframework.web.multipart.MultipartFile;
 import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
-import javax.xml.bind.annotation.XmlTransient;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 @Entity
@@ -46,15 +46,23 @@ public class Car {
     @NotNull
     private Double overduePerDay;
 
+    @NotNull
     private LocalDateTime createdDate;
 
-    private LocalDateTime updatedDate;
-
-    @JsonIgnore
     @Transient
+    @JsonIgnore
     private MultipartFile image;
 
+    @NotEmpty
     private String imagePath;
+
+    public MultipartFile getImage() {
+        return image;
+    }
+
+    public void setImage(MultipartFile image) {
+        this.image = image;
+    }
 
     public String getImagePath() {
         return imagePath;
@@ -64,14 +72,8 @@ public class Car {
         this.imagePath = imagePath;
     }
 
-    @XmlTransient
-    public MultipartFile getImage() {
-        return image;
-    }
-
-    public void setImage(MultipartFile image) {
-        this.image = image;
-    }
+    @NotNull
+    private LocalDateTime updatedDate;
 
     public LocalDateTime getCreatedDate() {
         return createdDate;
@@ -175,8 +177,6 @@ public class Car {
                 ", overduePerDay=" + overduePerDay +
                 ", createdDate=" + createdDate +
                 ", updatedDate=" + updatedDate +
-                ", image=" + image +
-                ", imagePath='" + imagePath + '\'' +
                 '}';
     }
 }
