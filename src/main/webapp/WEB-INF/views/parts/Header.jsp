@@ -4,7 +4,7 @@
 <html>
 <head>
 <style type="text/css">
-@import url("<spring:url value="resource/css/header.css"/>");
+@import url("<spring:url value="http://localhost:8080/CS545-Tokyo-Drifters-Final-Project/resource/css/header.css"/>");
 </style>
 <meta charset="UTF-8">
 <title>Insert title here</title>
