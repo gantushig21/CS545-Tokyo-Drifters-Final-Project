@@ -7,44 +7,68 @@
 <head>
 <meta charset="UTF-8">
 <title>Customer Add</title>
+<%@ include file="parts/meta.jsp"%>
+<%@ include file="parts/Header.jsp"%>
+<link rel="stylesheet"
+	href="<spring:url value="/resource/css/main.css"/>" />
+<link rel="stylesheet"
+	href="<spring:url value="/resource/css/cars.css"/>" />
 </head>
 <body>
+	<div class="form-container">
+		<div class="car-card">
+			<form:form cssStyle="width: 100%;" modelAttribute="newCustomer"
+				action="add?${_csrf.parameterName}=${_csrf.token}" method="post">
+				<div class="form-group">
+					<form:input path="firstName" value="Sergelen"
+						cssClass="form-control" />
+					<span class="form-span"> <form:errors path="firstName"
+							cssStyle="color : red;" />
+					</span>
+				</div>
+				<div class="form-group">
 
-	<form:form modelAttribute="newCustomer"
-		action="add?${_csrf.parameterName}=${_csrf.token}" method="post">
-		<p>
-			First name:
-			<form:input path="firstName" value="Sergelen" />
-			<form:errors path="firstName" cssStyle="color : red;" />
-		</p>
-		<p>
-			Last name:
-			<form:input path="lastName" value="Harry" />
-			<form:errors path="lastName" cssStyle="color : red;" />
-		</p>
-		<p>
-			Birthday:
-			<form:input path="birthday" value="2000/01/01" />
-			<form:errors path="birthday" cssStyle="color : red;" />
-		</p>
-		<p>
-			Passport Id:
-			<form:input path="passportId" value="123456780" />
-			<form:errors path="passportId" cssStyle="color : red;" />
-		</p>
-		<p>
-			Phone Number:
-			<form:input path="phoneNumber" value="88888888" />
-			<form:errors path="phoneNumber" cssStyle="color : red;" />
-		</p>
-		<p>
-			Email:
-			<form:input path="email" value="abc@abc.com" />
-			<form:errors path="email" cssStyle="color : red;" />
-		</p>
-		<input type="submit" value="Submit">
-	</form:form>
+					<form:input path="lastName" value="Harry" cssClass="form-control" />
+					<span class="form-span"> <form:errors path="lastName"
+							cssStyle="color : red;" />
+					</span>
+				</div>
+				<div class="form-group">
 
+					<form:input path="birthday" value="2000/01/01"
+						cssClass="form-control" />
+					<span class="form-span"> <form:errors path="birthday"
+							cssStyle="color : red;" />
+					</span>
+				</div>
+				<div class="form-group">
+
+					<form:input path="passportId" value="123456780"
+						cssClass="form-control" />
+					<span class="form-span"> <form:errors path="passportId"
+							cssStyle="color : red;" />
+					</span>
+				</div>
+				<div class="form-group">
+
+					<form:input path="phoneNumber" value="88888888"
+						cssClass="form-control" />
+					<span class="form-span"> <form:errors path="phoneNumber"
+							cssStyle="color : red;" />
+					</span>
+				</div>
+				<div class="form-group">
+
+					<form:input path="email" value="abc@abc.com"
+						cssClass="form-control" />
+					<span class="form-span"> <form:errors path="email"
+							cssStyle="color : red;" />
+					</span>
+				</div>
+				<input type="submit" value="Submit">
+			</form:form>
+		</div>
+	</div>
 
 </body>
 </html>

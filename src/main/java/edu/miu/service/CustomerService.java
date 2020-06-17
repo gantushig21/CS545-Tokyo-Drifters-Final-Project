@@ -2,6 +2,9 @@ package edu.miu.service;
 
 import java.util.List;
 
+import org.springframework.data.domain.Page;
+
+import edu.miu.domain.Car;
 import edu.miu.domain.Customer;
 
 public interface CustomerService {
@@ -19,5 +22,7 @@ public interface CustomerService {
 	boolean checkCustomer(long id);
 
 	Customer findCustomer(long id);
+	
+	 public Page<Customer> findAll(int page, int limit);
 
 }
