@@ -14,5 +14,7 @@ public interface CustomerService {
 	List<Customer> findAll();
 	boolean checkCustomer(long id);
 	Customer findCustomer(long id);
-	public Page<Customer> getCustomers(int page, int limit);
+	
+	 public Page<Customer> findAll(int page, int limit);
+
 }

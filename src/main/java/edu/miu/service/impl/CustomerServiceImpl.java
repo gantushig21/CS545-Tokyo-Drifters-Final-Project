@@ -11,6 +11,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import edu.miu.domain.Car;
 import edu.miu.domain.Customer;
 import edu.miu.repository.CustomerRepository;
 import edu.miu.service.CustomerService;
@@ -68,8 +69,10 @@ public class CustomerServiceImpl implements CustomerService {
 	}
 
 	@Override
-	public Page<Customer> getCustomers(int page, int limit) {
-		Pageable pageable = PageRequest.of(page,limit);
-		return  customerRepository.findAll(pageable);
+	public Page<Customer> findAll(int page, int limit) {
+
+		// TODO Auto-generated method stub
+		Pageable pageable = PageRequest.of(page, limit);
+		return customerRepository.findAll(pageable);
 	}
 }
