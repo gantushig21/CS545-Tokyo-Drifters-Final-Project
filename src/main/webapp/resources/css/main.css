@@ -1,0 +1,42 @@
+/*body {*/
+/*    font-family: "Lucida Console", Courier, monospace;*/
+/*}*/
+
+.error {
+    color: red;
+}
+
+.form-container {
+    width: 100%;
+    max-width: 1100px;
+    height: 100%;
+    margin: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.form-group {
+    margin-bottom: 0.8rem;
+}
+
+.form-control {
+    display: block;
+    width: 100%;
+    font-weight: 400;
+    color: #495057;
+    background-color: #fff;
+    background-clip: padding-box;
+    border: 1px solid #ced4da;
+    transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+    padding: .25rem .5rem;
+    font-size: .875rem;
+    line-height: 1.5;
+    border-radius: .2rem;
+}
+
+.form-span {
+    color: #555;
+    font-size: 13px;
+    opacity: 0.7;
+}

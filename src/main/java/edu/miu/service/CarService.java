@@ -13,4 +13,5 @@ public interface CarService {
     public void deleteById(Long carId);
     public Car getCarById(Long carId);
     public int count();
+    public void changeCarStatusById(Long carId, String status);
 }
