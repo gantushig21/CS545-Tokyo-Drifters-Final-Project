@@ -2,7 +2,7 @@ const contextRoot = "/" + window.location.pathname.split( '/' )[1];
 const token = $("meta[name='_csrf_token']").attr("content");
 const parameterName = $("meta[name='_csrf_parameterName']").attr("content");
 
-function updateCar(){
+function updateCustomer(){
     const inputJSON = JSON.stringify(serializeObject($("#customerForm")));
 
     console.log(token);
@@ -104,15 +104,18 @@ function displayCustomer(customer){
 
 $(function() {
 	const searchBtn = document.getElementById("searchBtn");
+	const updateBtn = document.getElementById("updateCustomer");
 
     if (updateBtn)
-        updateBtn.onclick = updateCar;
+        updateBtn.onclick = updateCustomer;
 
     const searchByPassport = document.getElementById("searchByPassport");
 
     if (searchByPassport)
         searchByPassport.onclick = getCustomer;
-	searchBtn.onclick = findCustomer;
+
+    if (searchBtn)
+		searchBtn.onclick = findCustomer;
 	
 	$("#windowCloseBtn").click(function(){
 		$("#popupWindow").hide();

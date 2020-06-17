@@ -1,5 +1,7 @@
 package edu.miu.domain;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
@@ -7,6 +9,7 @@ import javax.validation.constraints.NotNull;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.time.LocalDate;
 import java.util.Date;
 
 @Entity
@@ -40,9 +43,9 @@ public class Customer {
 
     private String email;
 
-    @NotNull
-    @Column(nullable = false)
-    private Date birthday;
+	@Column(nullable = false)
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
+	private LocalDate birthday;
 
     private Integer bonusScore;
 	
@@ -94,11 +97,11 @@ public class Customer {
 		this.email = email;
 	}
 
-	public Date getBirthday() {
+	public LocalDate getBirthday() {
 		return birthday;
 	}
 
-	public void setBirthday(Date birthday) {
+	public void setBirthday(LocalDate birthday) {
 		this.birthday = birthday;
 	}
 
