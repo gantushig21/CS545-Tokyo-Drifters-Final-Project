@@ -34,20 +34,20 @@
 			<div class="card-body">
 				<h2 class="card-title">${car.model}</h2>
 				<p>${car.pricePerDay}</p>
+				<p>${car.status}</p>
 				<a href="cars/detail?id=${car.id}" class="btn">Detail</a>
+				<a href="cars/detail?id=${car.id}" class="btn">Checkout</a>
 			</div>
 		</div>
 		</c:forEach>
 		</div>
 		<div class="wrapper-pagination">
-		<ul class="pagination">
-
-    <c:forEach var="i" begin="1" end="${pages}" step="1">
-    <li class="page-item"><a class="page-link" href="cars?page=${i-1}&limit=${limit}">${i}</a></li>
-</c:forEach>
-
-  </ul>
-</div>
+			<ul class="pagination">
+				<c:forEach var="i" begin="1" end="${pages}" step="1">
+					<li class="page-item"><a class="page-link" href="cars?page=${i-1}&limit=${limit}">${i}</a></li>
+				</c:forEach>
+  			</ul>
+		</div>
 	</div>
 	<%@ include file="parts/Footer.jsp"%>
 </body>
