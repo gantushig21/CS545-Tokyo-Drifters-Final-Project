@@ -1,7 +1,7 @@
 const contextRoot = "/" + window.location.pathname.split( '/' )[1];
 
 function updateCar(){
-    const inputJSON = JSON.stringify(serializeObject($("#carForm")));
+    const inputJSON = JSON.stringify(serializeObject($("#customerForm")));
 
     const token = $("meta[name='_csrf_token']").attr("content");
     const parameterName = $("meta[name='_csrf_parameterName']").attr("content");
@@ -11,7 +11,7 @@ function updateCar(){
     console.log(inputJSON);
 
     $.ajax({
-        url: contextRoot + "/cars/" + JSON.parse(inputJSON).id + `?${parameterName}=${token}`,
+        url: contextRoot + "/customer/update" + JSON.parse(inputJSON).id + `?${parameterName}=${token}`,
         type: "PUT",
         data: inputJSON,
         contentType: 'application/json; charset=utf-8',
@@ -36,8 +36,7 @@ function serializeObject (form) {
 };
 
 $(function(){
-    const updateBtn = document.getElementById("updateCar");
+    const updateBtn = document.getElementById("updateBtn");
 
     updateBtn.onclick = updateCar;
 })
-
