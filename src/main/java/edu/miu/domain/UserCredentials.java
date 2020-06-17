@@ -101,4 +101,19 @@ public class UserCredentials {
     public void setAuthorities(List<Authority> authorities) {
         this.authorities = authorities;
     }
+
+    @Override
+    public String toString() {
+        return "UserCredentials{" +
+                "username='" + username + '\'' +
+                ", firstName='" + firstName + '\'' +
+                ", lastName='" + lastName + '\'' +
+                ", phoneNumber='" + phoneNumber + '\'' +
+                ", email='" + email + '\'' +
+                ", password='" + password + '\'' +
+                ", verifyPassword='" + verifyPassword + '\'' +
+                ", enabled=" + enabled +
+                ", authorities=" + authorities +
+                '}';
+    }
 }

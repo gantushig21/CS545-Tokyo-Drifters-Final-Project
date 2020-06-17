@@ -13,7 +13,7 @@ import java.util.Date;
 public class Customer {
 	
 
-	 private static final SimpleDateFormat formatter = new SimpleDateFormat("yyyy/MM/dd");
+
 	
 	
 	
@@ -116,7 +116,6 @@ public class Customer {
 		this.bonusScore = bonusScore;
 	}
 	
-
 
 
 }
