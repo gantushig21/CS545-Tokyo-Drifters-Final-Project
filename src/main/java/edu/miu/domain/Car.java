@@ -1,6 +1,8 @@
 package edu.miu.domain;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.hibernate.validator.constraints.Range;
+import org.springframework.web.multipart.MultipartFile;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
@@ -46,6 +48,29 @@ public class Car {
 
     @NotNull
     private LocalDateTime createdDate;
+
+    @Transient
+    @JsonIgnore
+    private MultipartFile image;
+
+    @NotEmpty
+    private String imagePath;
+
+    public MultipartFile getImage() {
+        return image;
+    }
+
+    public void setImage(MultipartFile image) {
+        this.image = image;
+    }
+
+    public String getImagePath() {
+        return imagePath;
+    }
+
+    public void setImagePath(String imagePath) {
+        this.imagePath = imagePath;
+    }
 
     @NotNull
     private LocalDateTime updatedDate;

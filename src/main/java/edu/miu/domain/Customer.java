@@ -11,12 +11,6 @@ import java.util.Date;
 
 @Entity
 public class Customer {
-	
-
-
-	
-	
-	
 	@Override
 	public String toString() {
 		return "Customer [id=" + id + ", passportId=" + passportId + ", firstName=" + firstName + ", lastName="
@@ -115,7 +109,4 @@ public class Customer {
 	public void setBonusScore(Integer bonusScore) {
 		this.bonusScore = bonusScore;
 	}
-	
-
-
 }
