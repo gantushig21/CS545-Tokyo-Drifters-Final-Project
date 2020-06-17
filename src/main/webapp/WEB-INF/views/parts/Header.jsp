@@ -12,6 +12,7 @@
 <body>
 <ul class="header">
   <li><a href="#home">Car Renting</a></li>
+  <li><a href="cars/add">Add Car</a></li>
 </ul>
 </body>
 </html>
