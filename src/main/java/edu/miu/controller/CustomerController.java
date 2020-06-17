@@ -86,15 +86,7 @@ public class CustomerController {
 
 		return "redirect:list";
 	}
-//	@RequestMapping(value = "/find")
-//	public String findCustomer(@RequestParam("passporId") String passportId ) {
-//		
-//		Customer customer = customerService.findCustomerbyPassportId(passportId);
-//		if(customer==null) {
-//			return "";
-//		}
-//		return "";
-//	}
-//	
+	
+	
 
 }

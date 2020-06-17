@@ -28,13 +28,11 @@
 				<form action="/action_page.php">
 					<fieldset style="padding:20px">
 						<legend>Customer Detail:</legend>
-						<label for="fname">First name:</label> <p style="display:inline-block">${car.model}</p>
-						<br> <label for="lname">Last name:</label> <input type="text"
-							id="lname" name="lname"><br>
-						<br> <label for="email">Email:</label> <input type="email"
-							id="email" name="email"><br>
-						<br> <label for="birthday">Birthday:</label> <input
-							type="date" id="birthday" name="birthday"><br>
+						<label for="fname">First name:</label> <p style="display:inline">${customer.firstName}</p><br>
+						<br> <label for="lname">Last name:</label> <p style="display:inline">${customer.lastName}</p><br>
+						<br> <label for="email">Email:</label> <p style="display:inline">${customer.email}</p><br>
+						<br> <label for="passportId">Passport:</label> <p style="display:inline">${customer.passportId}</p><br>
+						<br> <label for="phone">Phone:</label> <p style="display:inline">${customer.phoneNumber}</p><br>
 					</fieldset>
 				</form>
 			</div>

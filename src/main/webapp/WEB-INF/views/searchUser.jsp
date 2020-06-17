@@ -26,7 +26,8 @@
 					aria-describedby="button-addon2">
 				<button id="searchUser" style="margin-left:10px" class="btn" type="button" id="button-addon2">Search</button>
 			</div>
-			<div class="searchUser-content"></div>
+			<div class="info" style="margin-top:20px;"></div>
+			<div id="searchUserGroup" class="searchUser-content">
 			<div style="text-align: center; float:right;margin-top:30px">
 				<div style="display:inline;">
 					<button style="display:inline-block;" class="btn" type="button" id="button-addon2">Cancel</button>
@@ -34,6 +35,7 @@
 				<div style="display:inline;">
 					<a href="check-out/detail" style="display:inline-block;" class="btn" type="button" id="button-addon2">Next</a>
 				</div>
+			</div>
 			</div>
 		</div>
 		</div>

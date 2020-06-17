@@ -11,12 +11,16 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttributes;
+import org.springframework.web.bind.support.SessionStatus;
 
 import edu.miu.domain.Car;
 import edu.miu.domain.CheckOut;
+import edu.miu.domain.Customer;
 import edu.miu.domain.Payment;
 import edu.miu.service.CarService;
+import edu.miu.service.CustomerService;
 import edu.miu.service.PaymentService;
 
 @Controller
@@ -28,6 +32,9 @@ public class CheckOutController {
 
 	@Autowired
 	private CarService carService;
+	
+	@Autowired
+	CustomerService customerService;
 
 	@RequestMapping(value = "", method = RequestMethod.GET)
 	public String renderCheckOut(@RequestParam("carId") Long carId, Model model) {
@@ -42,6 +49,7 @@ public class CheckOutController {
 	public String renderCheckOutDetail(Model model) {
 		CheckOut checkOut = (CheckOut) (((ModelMap) model).get("check-out"));
 		model.addAttribute("car", checkOut.getCar());
+		model.addAttribute("customer", checkOut.getCustomer());
 		return "checkout-detail";
 	}
 
@@ -61,8 +69,22 @@ public class CheckOutController {
 	}
 	
 	@RequestMapping(value = { "/thank-you" }, method = RequestMethod.GET)
-	public String renderThankYou() {
+	public String renderThankYou(SessionStatus status) {
+		status.setComplete();
 		return "thank-you";
+	}
+	
+	@RequestMapping(value = "/find", method = RequestMethod.GET)
+	@ResponseBody
+	public Customer findCustomer(@RequestParam("passportId") String passportId,Model model ) {
+		CheckOut checkOut = (CheckOut) (((ModelMap) model).get("check-out"));
+		Customer customer = customerService.findCustomerbyPassportId(passportId);
+		checkOut.setCustomer(customer);
+		model.addAttribute("check-out", checkOut);
+		if(customer==null) {
+			return null;
+		}
+		return customer;
 	}
 
 }
