@@ -61,6 +61,7 @@ html, body {
 }
 
 .section {
+	width: 100%;
 	padding: 35px;
 }
 
@@ -100,6 +101,14 @@ html, body {
 
 a {
 	text-decoration: none;
+}
+
+button {
+	cursor: pointer;
+}
+
+button:disabled {
+	cursor: not-allowed;
 }
 
 table {

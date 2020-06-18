@@ -17,6 +17,7 @@ import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
 import org.springframework.util.MultiValueMap;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.support.SessionStatus;
 
 import javax.validation.Valid;
 import java.time.LocalDate;
@@ -62,7 +63,8 @@ public class CheckoutController {
     public String returnCarForm(@RequestParam("checkout_id") Long checkoutId, Model model) {
         System.out.println("checkout/return " + checkoutId);
         Checkout checkout = checkoutService.getById(checkoutId);
-        checkout.setReturnDate(LocalDate.now());
+        if (checkout.getReturnDate() == null)
+            checkout.setReturnDate(LocalDate.now());
 
         model.addAttribute("checkout", checkout);
         model.addAttribute("action", "return");
@@ -110,7 +112,7 @@ public class CheckoutController {
         carService.changeCarStatusById(car.getId(), "not available");
         checkoutService.create(checkout);
 
-        return "redirect:/cars?page=0&limit=10";
+        return "redirect:/checkouts/thank-you";
     }
 
     ObjectMapper mapper = new ObjectMapper();
@@ -208,10 +210,18 @@ public class CheckoutController {
     @RequestMapping(value = "/search", method = RequestMethod.GET)
     public String renderCheckOut(@RequestParam("carId") Long carId, Model model) {
         Car car = carService.getCarById(carId);
+        if (car == null || !car.getStatus().equals("available"))
+            return "redirect:/cars?page=0&limit=10";
         Checkout checkout = new Checkout();
         checkout.setCar(car);
         model.addAttribute("checkout-process", checkout);
         return "searchUser";
+    }
+
+    @RequestMapping(value = { "/thank-you" }, method = RequestMethod.GET)
+    public String renderThankYou(SessionStatus status) {
+        status.setComplete();
+        return "thank-you";
     }
 }
 

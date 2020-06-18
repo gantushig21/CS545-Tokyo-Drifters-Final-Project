@@ -128,7 +128,7 @@
                     <div class="col-6">
                         <c:if test="${action eq 'return'}">
                             <div class="date-div">
-                                <label id="overdueCost"><strong>Overdue Cost: </strong>${checkout.feeForOverdue} $</label>
+                                <label id="overdueCost"><strong>Overdue Cost: </strong> ${checkout.feeForOverdue} $</label>
                                 <input type="hidden" name="overdueCost" id="overdueCostInput">
                             </div>
                         </c:if>
@@ -141,7 +141,7 @@
                         <button id="returnBtn" class="button button-default" type="button">Return Car</button>
                     </c:when>
                     <c:otherwise>
-                        <button id="rentBtn" class="button button-default" type="submit">Submit</button>
+                        <button id="rentBtn" class="button button-default" type="submit" disabled="true">Submit</button>
                     </c:otherwise>
                 </c:choose>
             </div>

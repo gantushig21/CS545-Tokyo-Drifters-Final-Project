@@ -56,7 +56,8 @@ public class CarServiceImpl implements CarService {
     @Override
     public Car getCarById(Long carId) {
         Optional<Car> car = carRepository.findById(carId);
-        return car.get();
+
+        return car.isPresent() ? car.get() : null;
     }
 
     @Override

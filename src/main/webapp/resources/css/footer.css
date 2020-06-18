@@ -7,12 +7,11 @@
     background-color: #36304a;
    color: white;
    text-align: center;
+    font-size: 13px;
 }
 
 .footer-text{
-	 padding: 10px 16px;	
+	 padding: 10px 16px;
+    text-align: left;
 }
 
-span{
-	float:left
-}

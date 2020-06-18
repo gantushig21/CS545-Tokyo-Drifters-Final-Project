@@ -16,7 +16,7 @@ function searchUser() {
         },
 
         error: function (error) {
-            createCustomerForm();
+            createCustomerForm(passportID);
             $('#searchUserGroup').html(``);
             $('.info').html("<p style='color:red'>User not exist. Please create new user </p>");
         }
@@ -84,7 +84,7 @@ function customerFoundForm(response) {
         </div>`);
 }
 
-function createCustomerForm() {
+function createCustomerForm(passportID) {
     $('#customerSection').html(`
 <div class="rent-card" style="max-width: 450px;">
         <div class="info" style="margin-bottom: 20px;"></div>
@@ -109,7 +109,7 @@ function createCustomerForm() {
         </div>
         <div class="row">
         <div class="col-5"><label class="form-label" for="passportId"><strong>Passport ID:</strong></label></div>
-    <div class="col-7"><input type="text" id="passportId" name="passportId" class="form-control"></div>
+    <div class="col-7"><input type="text" id="passportId" name="passportId" class="form-control" value="${passportID}"></div>
         </div>
         <div class="row">
         <div class="col-5"><label class="form-label" for="phoneNumber"><strong>Phone Number:</strong></label></div>
