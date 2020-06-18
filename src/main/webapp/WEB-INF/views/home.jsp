@@ -14,7 +14,7 @@
 <body>
 
 	<jsp:include page="parts/header.jsp" />
-	<div class="container home-background">
+	<div class="home-background">
 
 		<jsp:include page="parts/clock.jsp" />
 
