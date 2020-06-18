@@ -1,11 +1,11 @@
 package edu.miu.repository;
 
-import org.springframework.data.repository.CrudRepository;
+import edu.miu.domain.Checkout;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.repository.PagingAndSortingRepository;
 
-import edu.miu.domain.CheckOut;
-
-public interface CheckoutRepository extends CrudRepository<CheckOut, Long> {
-
-
-
+public interface CheckoutRepository extends PagingAndSortingRepository<Checkout, Long> {
+    @Override
+    Page<Checkout> findAll(Pageable pageable);
 }

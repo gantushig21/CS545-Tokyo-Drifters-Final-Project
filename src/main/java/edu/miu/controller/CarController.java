@@ -81,18 +81,13 @@ public class CarController {
         return "redirect:/cars?page=0&limit=10";
     }
 
-    @RequestMapping(value = {"/delete"}, method = RequestMethod.GET)
-    public String deleteCar(@RequestParam("id") Long carId) {
-        carService.deleteById(carId);
-
-        return "redirect:/cars?page=0&limit=10";
-    }
 
     @RequestMapping(value = {"/detail"}, method = RequestMethod.GET)
     public String getCarDetail(@RequestParam("id") Long carId, Model model) {
         Car car = carService.getCarById(carId);
 
         model.addAttribute("car", car);
+        addCarSelectOptions(model);
 
         return "car-detail";
     }
@@ -102,7 +97,20 @@ public class CarController {
         System.out.println(car);
         carService.update(car);
 
-        return new Response("success", "Updated Successful");
+        return new Response("success", "Car detail updated Successful");
+    }
+
+    @RequestMapping(value = "{carId}", method = RequestMethod.DELETE)
+    public @ResponseBody Response deleteCar(@PathVariable Long carId) {
+        Response response = new Response("success", "Car deleted successful");
+        try {
+            carService.deleteById(carId);
+        } catch (Exception ex) {
+            response.setStatus("failed");
+            response.setMessage(ex.getMessage());
+        }
+
+        return response;
     }
 
     @RequestMapping(value = "", method = RequestMethod.GET)

@@ -20,7 +20,7 @@
 	src="<spring:url value="/resource/js/payment.js"/>"></script>
 </head>
 <body>
-	<%@ include file="parts/Header.jsp"%>
+	<%@ include file="parts/header.jsp"%>
 	<div class="container">
 		<div class="content-wrapper">
 			<div>
@@ -52,6 +52,6 @@
 			
 		</div>
 	</div>
-	<%@ include file="parts/Footer.jsp"%>
+	<%@ include file="parts/footer.jsp"%>
 </body>
 </html>

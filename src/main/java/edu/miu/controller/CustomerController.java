@@ -59,7 +59,7 @@ public class CustomerController {
 			Model model) {
 		System.out.println(customerId);
 		Customer customer = customerService.findCustomer(Long.valueOf(customerId));
-		model.addAttribute("birthday", new SimpleDateFormat("yyyy/MM/dd").format(customer.getBirthday()).toString());
+		model.addAttribute("birthday", customer.getBirthday());
 		model.addAttribute("customer", customer);
 		model.addAttribute("updatedcustomer", updatedcustomer);
 		return "customer-details";
@@ -84,6 +84,7 @@ public class CustomerController {
 	@RequestMapping(value = "{id}", method = RequestMethod.PUT)
 	public @ResponseBody Response updateCustomer(@RequestBody Customer customer) {
 		System.out.println(customer);
+		customerService.saveCustomer(customer);
 
 		return new Response("success", "Updated Successful");
 	}

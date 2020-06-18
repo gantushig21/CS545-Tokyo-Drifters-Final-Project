@@ -36,7 +36,7 @@ function returnCar() {
     const parameterName = $("meta[name='_csrf_parameterName']").attr("content");
 
     $.ajax({
-        url: contextRoot + "/rent/return/" + JSON.parse(inputJSON).id + `?${parameterName}=${token}`,
+        url: contextRoot + "/checkouts/return/" + JSON.parse(inputJSON).id + `?${parameterName}=${token}`,
         type: "PUT",
         data: inputJSON,
         contentType: 'application/json; charset=utf-8',

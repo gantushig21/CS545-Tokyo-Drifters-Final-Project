@@ -2,7 +2,7 @@
 	margin: 0;
 	padding: 0;
 	box-sizing: border-box;
-	overflow-x:hidden;
+	/*overflow-x:hidden;*/
 }
 
 html, body {
@@ -22,6 +22,44 @@ html, body {
 	max-width: 1200px;
 }
 
+.home-background {
+	position: relative;
+	height: 100%;
+}
+
+.home-background:after {
+	background-image: url('../images/background.jpg');
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size: cover;
+	content: "";
+	opacity: 0.35;
+	top: 0;
+	left: 0;
+	bottom: 0;
+	right: 0;
+	position: absolute;
+	z-index: -1;
+}
+
+.login-container {
+	height: 100%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.login-container > div {
+	width: 100%;
+	max-width: 400px;
+
+	box-shadow: 0 6px 16px 0 rgba(0,0,0,.2);
+	box-sizing: border-box;
+	padding: 30px;
+	padding-top: 0 !important;
+	border-radius: 10px;
+}
+
 .section {
 	padding: 35px;
 }
@@ -31,19 +69,32 @@ html, body {
 	display: flex;
 	-ms-flex-wrap: wrap;
 	flex-wrap: wrap;
+	width: 100%;
 }
 
 .row>[class^=col-] {
 	padding: 6px 0px;
 }
 
-.col-6 {
+.col-4, .col-5, .col-6, .col-7 .col-8 {
 	width: 100%;
 }
 
 @media screen and (min-width: 600px) {
+	.col-4 {
+		width: 33.3333%;
+	}
+	.col-5 {
+		width: 41.6666%;
+	}
 	.col-6 {
 		width: 50%;
+	}
+	.col-7 {
+		width: 58.3333%;
+	}
+	.col-8 {
+		width: 66.6666%;
 	}
 }
 
@@ -103,10 +154,21 @@ tbody td {
 	background-color: #36304a;
 	border-color: #36304a;
 }
+
+.button-right {
+	margin-right: 0;
+}
+
+.button-link {
+	font-size: 13px;
+}
+
 .input-group{
 	position:relative;
 	display:flex;
-	flex-wrap:wrap;
+	/*flex-wrap:wrap;*/
+	flex-wrap: nowrap;
+	justify-content: flex-end;
 	align-items: stretch;
     width: 100%;
 }

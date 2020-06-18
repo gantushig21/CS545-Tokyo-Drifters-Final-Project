@@ -43,8 +43,7 @@
 }
 
 #left {
-    float:left;
-    width:200px;
+	display: flex;
 }
 
 #center {

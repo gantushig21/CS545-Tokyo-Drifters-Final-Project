@@ -7,14 +7,13 @@
 <html>
 <head>
 	<title>Customer Detail</title>
-	<%@ include file="parts/meta.jsp"%>
-	<%@ include file="parts/Header.jsp"%>
-	<link rel="stylesheet" href="<spring:url value="/resource/css/main.css"/>" />
+	<jsp:include page="parts/head.jsp" />
+
 	<link rel="stylesheet" href="<spring:url value="/resource/css/cars.css"/>" />
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 	<script type="text/javascript" src="<spring:url value="/resource/js/customers.js"/>"></script>
 </head>
 <body>
+	<jsp:include page="parts/header.jsp" />
 	<div class="form-container">
 		<div class="car-card">
 		<form:form
@@ -55,17 +54,19 @@
 		</div>
 		<div class="form-group">
 			Birthday:
-			<form:input path="birthday" id="birthday" cssClass="form-control"
+			<form:input path="birthday" id="birthday" cssClass="form-control" type="date"
 				value="${birthday}" />
 			<form:errors path="birthday" cssStyle="color : red;" />
 		</div>
 <%--		<input type = "submit" value = "Update" />--%>
 	</form:form>
+		<div style="display: flex; justify-content: flex-end; width: 100%;">
+			<a href="delete?id=${customer.id}" class="button button-default button-link">Delete</a>
+			<button id="updateCustomer" class="button button-default" style="margin-right: 0;">Update</button>
+		</div>
 <%--			<a href="/CS545-Tokyo-Drifters-Final-Project/customer?page=0&limit=10">Back</a>--%>
-			<button id="updateCustomer">Update</button>
-			<a href="delete?id=${customer.id}">Delete</a>
 	</div>
 	</div>
-
+	<jsp:include page="parts/footer.jsp" />
 </body>
 </html>
