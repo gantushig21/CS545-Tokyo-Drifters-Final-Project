@@ -5,17 +5,13 @@ import java.util.List;
 
 import javax.validation.Valid;
 
+import edu.miu.domain.Response;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
 import edu.miu.domain.Customer;
 import edu.miu.service.CustomerService;
@@ -63,26 +59,34 @@ public class CustomerController {
 			Model model) {
 		System.out.println(customerId);
 		Customer customer = customerService.findCustomer(Long.valueOf(customerId));
-		model.addAttribute("birthday", new SimpleDateFormat("yyyy/MM/dd").format(customer.getBirthday()).toString());
+		model.addAttribute("birthday", customer.getBirthday());
 		model.addAttribute("customer", customer);
 		model.addAttribute("updatedcustomer", updatedcustomer);
 		return "customer-details";
 	}
 
-	@RequestMapping(value = "details/update", method = RequestMethod.POST)
-	public String updateCustomer(@Valid @ModelAttribute("updatedcustomer") Customer updatedcustomer, Model model,
-			BindingResult result) {
+//	@RequestMapping(value = "details/update", method = RequestMethod.POST)
+//	public String updateCustomer(@Valid @ModelAttribute("updatedcustomer") Customer updatedcustomer, Model model,
+//			BindingResult result) {
+//
+//		if (result.hasErrors()) {
+//			return "customer-details";
+//		}
+//
+//		customerService.saveCustomer(updatedcustomer);
+//		Customer newcustomer = customerService.findCustomer(updatedcustomer.getId());
+//		model.addAttribute("birthday",
+//				new SimpleDateFormat("yyyy/MM/dd").format(updatedcustomer.getBirthday()).toString());
+//		model.addAttribute("customer", newcustomer);
+//		return "customer-details";
+//	}
 
-		if (result.hasErrors()) {
-			return "customer-details";
-		}
+	@RequestMapping(value = "{id}", method = RequestMethod.PUT)
+	public @ResponseBody Response updateCustomer(@RequestBody Customer customer) {
+		System.out.println(customer);
+		customerService.saveCustomer(customer);
 
-		customerService.saveCustomer(updatedcustomer);
-		Customer newcustomer = customerService.findCustomer(updatedcustomer.getId());
-		model.addAttribute("birthday",
-				new SimpleDateFormat("yyyy/MM/dd").format(updatedcustomer.getBirthday()).toString());
-		model.addAttribute("customer", newcustomer);
-		return "customer-details";
+		return new Response("success", "Updated Successful");
 	}
 
 	@RequestMapping(value = { "details/delete" }, method = RequestMethod.GET)
@@ -100,5 +104,11 @@ public class CustomerController {
 		}
 		return customer;
 	}
-
+  
+	@RequestMapping(value = "{passportId}", method = RequestMethod.GET)
+	public @ResponseBody Customer getCustomerById(@PathVariable String passportId) {
+		Customer customer = customerService.findCustomerbyPassportId(passportId);
+    
+		return customer == null ? new Customer() : customer;
+	}
 }

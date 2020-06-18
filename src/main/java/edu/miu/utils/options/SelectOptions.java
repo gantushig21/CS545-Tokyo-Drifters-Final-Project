@@ -6,9 +6,9 @@ public class SelectOptions {
     public static HashMap<String, String> getCarStatus() {
         HashMap<String, String> status = new HashMap<>();
 
-        status.put("available", "Available");
-        status.put("not available", "Not Available");
         status.put("repair", "Repair");
+        status.put("not available", "Not Available");
+        status.put("available", "Available");
 
         return status;
     }

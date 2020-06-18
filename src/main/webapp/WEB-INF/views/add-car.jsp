@@ -7,34 +7,40 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"  %>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 
 <html>
 <head>
-    <title>Add Car</title>
-    <%@ include file="parts/meta.jsp"%>
-    <%@ include file="parts/Header.jsp"%>
+    <title>New Car</title>
+    <jsp:include page="parts/head.jsp" />
     <link rel="stylesheet" href="<spring:url value="/resource/css/cars.css"/>" />
-    <link rel="stylesheet" href="<spring:url value="/resource/css/main.css"/>" />
 </head>
 <body>
+    <jsp:include page="parts/header.jsp" />
     <div class="form-container">
         <div class="car-card">
-            <form:form cssStyle="width: 100%;" modelAttribute="newCar" action="add?${_csrf.parameterName}=${_csrf.token}" enctype="multipart/form-data">
+            <form:form
+                modelAttribute="newCar"
+                action="add?${_csrf.parameterName}=${_csrf.token}"
+                method="post"
+                cssStyle="width: 100%;"
+                enctype="multipart/form-data"
+            >
                 <div class="form-group">
-                    <form:input path="factory" id="factory" placeholder="Factory" cssClass="form-control" required="true" />
+                    <form:input path="factory" id="factory" placeholder="Factory" cssClass="form-control" required="true"/>
                     <span class="form-span">
                         <form:errors path="factory" cssClass="error" />
                     </span>
                 </div>
                 <div class="form-group">
-                    <form:input path="model" id="model" placeholder="Model" cssClass="form-control" required="true" />
+                    <form:input path="model" id="model" placeholder="Model" cssClass="form-control" required="true"/>
                     <span class="form-span">
                         <form:errors path="model" cssClass="error" />
                     </span>
                 </div>
                 <div class="form-group">
-                    <form:input path="number" id="number" placeholder="Number" cssClass="form-control" required="true" />
+                    <form:input path="number" id="number" placeholder="Number" cssClass="form-control" required="true"/>
                     <span class="form-span">
                         <form:errors path="number" cssClass="error" />
                     </span>
@@ -50,13 +56,13 @@
                     </form:select>
                 </div>
                 <div class="form-group">
-                    <form:input path="pricePerDay" id="pricePerDay" placeholder="Price per Day" cssClass="form-control" required="true" />
+                    <form:input path="pricePerDay" id="pricePerDay" placeholder="Price per Day" cssClass="form-control" required="true"/>
                     <span class="form-span">
                         <form:errors path="pricePerDay" cssClass="error" />
                     </span>
                 </div>
                 <div class="form-group">
-                    <form:input path="seats" id="seats" placeholder="Seats" cssClass="form-control" required="true" />
+                    <form:input path="seats" id="seats" placeholder="Seats" cssClass="form-control" required="true"/>
                     <span class="form-span">
                         <form:errors path="seats" cssClass="error" />
                     </span>
@@ -77,5 +83,6 @@
             </form:form>
         </div>
     </div>
+    <jsp:include page="parts/footer.jsp" />
 </body>
 </html>

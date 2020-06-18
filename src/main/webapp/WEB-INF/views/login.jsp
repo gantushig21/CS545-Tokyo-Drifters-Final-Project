@@ -12,23 +12,34 @@
 <html>
 <head>
     <title>Login</title>
+    <link rel="stylesheet" href="<spring:url value="/resource/css/main.css"/>">
+    <link rel="stylesheet" href="<spring:url value="/resource/css/index.css"/>">
 </head>
 <body>
-    <h1>Login page</h1>
-    <form action="<spring:url value="/login"></spring:url>" method="post">
-        <fieldset>
-            <div class="form-group">
-                <input class="form:input-large" placeholder="User Name" name='username' type="text">
+    <div class="container">
+        <div class="login-container">
+            <div>
+                <div>
+                    <img src="<spring:url value="/resource/images/logo.png"/>" style="width: 100%">
+                </div>
+                <form action="<spring:url value="/login"></spring:url>" method="post">
+                    <div class="form-group">
+                        <input class="form-control" placeholder="User Name" name='username' type="text">
+                    </div>
+                    <div class="form-group">
+                        <input class="form-control" placeholder="Password" name='password'  type="password" value="">
+                    </div>
+                    <div class="form-group">
+                        <input id="keepMe" type='checkbox' name="keepMe"/> <label for="keepMe">Remember Me?</label> <br/>
+                    </div>
+                    <div style="text-align: right;">
+                        <input class="button button-default" style="margin-right: 0;" type="submit" value="Login">
+                    </div>
+                    <security:csrfInput />
+                </form>
             </div>
-            <div class="form-group">
-                <input class=" form:input-large" placeholder="Password" name='password'  type="password" value="">
-            </div>
-            <div class="form-group">
-                <input type='checkbox' name="keepMe"/>Remember Me? <br/>
-            </div>
-            <input class="btn btn-lg btn-success btn-mini" type="submit" value="Login">
-        </fieldset>
-        <security:csrfInput />
-    </form>
+        </div>
+    </div>
+
 </body>
 </html>
