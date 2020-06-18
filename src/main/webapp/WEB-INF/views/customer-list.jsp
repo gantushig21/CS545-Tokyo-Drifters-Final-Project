@@ -6,43 +6,43 @@
 <!DOCTYPE html>
 <html>
 <head>
+	<title>Customer List</title>
+	<jsp:include page="parts/head.jsp" />
 
-<meta charset="UTF-8">
-<%@ include file="parts/meta.jsp"%>
+	<link rel="stylesheet" href="<spring:url value="/resource/css/customer.css"/>" />
+	<script type="module" src="<spring:url value="/resource/js/customers.js"/>"></script>
 
-<title>Customer List</title>
-<script type="text/javascript"
-	src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
-<script type="text/javascript"
-	src="<spring:url value="/resource/js/customers.js"/>"></script>
-<link rel="stylesheet"
-	href="<spring:url value="/resource/css/index.css"/>" />
-<link rel="stylesheet"
-	href="<spring:url value="/resource/css/customer.css"/>" />
-<link rel="stylesheet"
-	href="<spring:url value="/resource/css/cars.css"/>" />
-	<link rel="stylesheet"
-	href="<spring:url value="/resource/css/list-car.css"/>" />
-<%@ include file="parts/Header.jsp"%>
+<%--	<script type="text/javascript"--%>
+<%--	src="<spring:url value="/resource/js/customers.js"/>"></script>--%>
+<%--<link rel="stylesheet"--%>
+<%--	href="<spring:url value="/resource/css/customer.css"/>" />--%>
+<%--<link rel="stylesheet"--%>
+<%--	href="<spring:url value="/resource/css/cars.css"/>" />--%>
+<%--	<link rel="stylesheet"--%>
+<%--	href="<spring:url value="/resource/css/list-car.css"/>" />--%>
+<%--<%@ include file="parts/header.jsp"%>--%>
 
 </head>
 <body>
+	<jsp:include page="parts/header.jsp" />
 
 	<div id="popupWindow" style="display: none">
-		<div id="windowMessage"></div>
-		<button id="windowCloseBtn">Close Window</button>
-	</div>
-	<div id="container">
-		<div id="left">
-			<input type="text" id="search" />
-			<button id="searchBtn">Search</button>
+		<div id="windowMessage" style="width: 100%;"></div>
+		<div style="text-align: right; width: 100%;">
+			<button id="windowCloseBtn" class="button button-default">Close Window</button>
 		</div>
-		<form:form id="right" action="customer/add" method="get">
-			<input type="submit" value="Add a Customer" />
-		</form:form>
-		<div id="center"></div>
 	</div>
+
 	<div class="container">
+		<div class="section">
+			<div style="display: flex; justify-content: space-between;">
+				<a href="customer/add" class="button button-default button-link">Add a Customer</a>
+				<div id="left">
+					<input type="text" class="form-control" id="search" />
+					<button id="searchBtn" class="button button-default" >Search</button>
+				</div>
+			</div>
+		</div>
 		<div class="section">
 			<table>
 				<thead>
@@ -67,7 +67,7 @@
 							<td><c:out value="${customer.birthday}" /></td>
 							<td><c:out value="${customer.email}" /></td>
 							<td><c:out value="${customer.phoneNumber}" /></td>
-							<td><a href="customer/details/${customer.id}">Details</a></td>
+							<td><a href="customer/details/${customer.id}" class="button button-default button-link">Details</a></td>
 						</tr>
 					</c:forEach>
 				</tbody>
@@ -79,5 +79,7 @@
 			</jsp:include>
 		</div>
 	</div>
+	<jsp:include page="parts/footer.jsp" />
+
 </body>
 </html>

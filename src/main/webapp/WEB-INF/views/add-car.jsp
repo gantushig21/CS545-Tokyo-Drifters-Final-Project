@@ -12,13 +12,12 @@
 
 <html>
 <head>
-    <title>Add Car</title>
-    <%@ include file="parts/meta.jsp"%>
-    <%@ include file="parts/Header.jsp"%>
+    <title>New Car</title>
+    <jsp:include page="parts/head.jsp" />
     <link rel="stylesheet" href="<spring:url value="/resource/css/cars.css"/>" />
-    <link rel="stylesheet" href="<spring:url value="/resource/css/main.css"/>" />
 </head>
 <body>
+    <jsp:include page="parts/header.jsp" />
     <div class="form-container">
         <div class="car-card">
             <form:form
@@ -84,5 +83,6 @@
             </form:form>
         </div>
     </div>
+    <jsp:include page="parts/footer.jsp" />
 </body>
 </html>

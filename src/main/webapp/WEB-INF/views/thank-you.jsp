@@ -12,7 +12,7 @@
 
 </head>
 <body>
-<%@ include file="parts/Header.jsp" %> 
+<%@ include file="parts/header.jsp" %>
 <div class="container"> 
 		<div class="content-wrapper">
 			<div style="width:100%;margin:0 auto;text-align:center;">
@@ -23,6 +23,6 @@
 			</div>
 		</div>
 </div>
- <%@ include file="parts/Footer.jsp" %>  
+ <%@ include file="parts/footer.jsp" %>
 </body>
 </html>
