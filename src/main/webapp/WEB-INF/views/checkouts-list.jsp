@@ -53,7 +53,7 @@
                                 </c:choose>
                             </td>
                             <td>
-                                <a href="${pageContext.request.contextPath}/checkouts/return?checkout_id=${checkout.id}">Details</a>
+                                <a class="button button-default button-link" href="${pageContext.request.contextPath}/checkouts/return?checkout_id=${checkout.id}">Details</a>
                             </td>
                         </tr>
                     </c:forEach>

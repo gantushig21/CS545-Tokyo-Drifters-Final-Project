@@ -8,8 +8,10 @@ function dueDateChange(pricePerDay, value) {
     let rentCost = `<strong>Rent Cost:</strong>`;
     if (checkoutDate > dueDate || day === 0) {
         document.getElementById("dueDate").value = "";
+        document.getElementById("rentBtn").disabled = true;
         rentCost += '0 $';
     } else {
+        document.getElementById("rentBtn").disabled = false;
         rentCost +=  (pricePerDay * day) + " $";
     }
     document.getElementById("rentCost").innerHTML = rentCost;
@@ -42,6 +44,9 @@ function returnCar() {
         contentType: 'application/json; charset=utf-8',
         dataType: 'json',
         success: function(response) {
+            if (response.status === "success") {
+                window.location.replace(contextRoot + "/checkouts/thank-you");
+            }
             console.log(response)
         },
 

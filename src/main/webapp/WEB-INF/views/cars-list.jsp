@@ -20,6 +20,9 @@
 <body>
 	<jsp:include page="parts/header.jsp" />
 	<div class="container">
+		<div class="section" style="display: flex; justify-content: flex-end;">
+			<a href="${pageContext.request.contextPath}/cars/add" class="button button-default button-link button-right">Add Car</a>
+		</div>
 		<div class="flex-container">
 		<c:forEach items="${cars}" var="car" >
 			<div class="card car-card">

@@ -3,26 +3,21 @@
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 <html>
 <head>
-<style type="text/css">
-@import url("<spring:url value="http://localhost:8080/CS545-Tokyo-Drifters-Final-Project/resource/css/index.css"/>");
-</style>
-
-<%@ include file="parts/meta.jsp" %>  
-<title>Home Page</title>
-
+	<title>Thank You Page</title>
+	<jsp:include page="parts/head.jsp" />
 </head>
 <body>
-<%@ include file="parts/header.jsp" %>
+<jsp:include page="parts/header.jsp" />
 <div class="container"> 
 		<div class="content-wrapper">
 			<div style="width:100%;margin:0 auto;text-align:center;">
 				<p style="margin-bottom:20px">Thank you for using our services</p>
 			<div style="display:inline; ">
-					<a href="/CS545-Tokyo-Drifters-Final-Project/cars?page=0&limit=10" style="display:inline-block;" class="btn" type="button" id="button-addon2">Home Page</a>
+					<a href="${pageContext.request.contextPath}/cars?page=0&limit=10" style="display:inline-block;" class="button button-default" type="button" id="button-addon2">Go back to car list</a>
 				</div>
 			</div>
 		</div>
 </div>
- <%@ include file="parts/footer.jsp" %>
+<jsp:include page="parts/footer.jsp" />
 </body>
 </html>
