@@ -194,16 +194,16 @@ public class CheckoutController {
     @RequestMapping(value = "/add-user", method = RequestMethod.POST)
     @ResponseBody
     public Customer addCustomerFromCheckOut(@Valid @RequestBody Customer newCustomer, Model model) {
-        System.out.println("Start is Here");
+//        System.out.println("Start is Here");
         Checkout checkout = (Checkout) (((ModelMap) model).get("checkout-process"));
-        System.out.println("Start is Here");
+//        System.out.println("Start is Here");
         System.out.println(newCustomer);
         Customer customer = customerService.saveCustomer(newCustomer);
-        System.out.println("Start is Here");
+//        System.out.println("Start is Here");
         checkout.setCustomer(customer);
-        System.out.println("Start is Here");
+//        System.out.println("Start is Here");
         model.addAttribute("checkout-process", checkout);
-        System.out.println("Start is Here");
+//        System.out.println("Start is Here");
         return customer;
     }
 

@@ -6,7 +6,6 @@ import javax.persistence.Id;
 
 @Entity
 public class Payment {
-
 	@Id
 	@GeneratedValue
 	private Long id;
@@ -23,7 +22,4 @@ public class Payment {
 	public void setPaymentType(String paymentType) {
 		this.paymentType = paymentType;
 	}
-	
-	
-
 }

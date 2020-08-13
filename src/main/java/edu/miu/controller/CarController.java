@@ -29,14 +29,6 @@ public class CarController {
 
     @RequestMapping(value = {"/add"}, method = RequestMethod.GET)
     public String addCar(@ModelAttribute("newCar") Car car, Model model) {
-//        car.setFactory("Toyota");
-//        car.setModel("WX11");
-//        car.setNumber("3D3 11E");
-//        car.setStatus("available");
-//        car.setSeats(3);
-//        car.setPricePerDay(28.0);
-//        car.setOverduePerDay(33.0);
-
         addCarSelectOptions(model);
 
         return "add-car";
@@ -58,10 +50,6 @@ public class CarController {
         }
 
         MultipartFile carImage = car.getImage();
-
-        System.out.println(carImage.getOriginalFilename());
-
-        System.out.println(carImage.getContentType());
 
         String rootDirectory = servletContext.getRealPath("/");
 
